@@ -21,7 +21,7 @@ public class OperatorPractice2 {
 		System.out.print("성적 : ");
 		double input6 = sc.nextDouble();
 		
-		System.out.printf("%d학년 %d반 %d번 %s %s의 성적은 %.2f점 입니다.", input1, input2, input3, input4, input5, input6);
+		System.out.printf("\n%d학년 %d반 %d번 %s %s의 성적은 %.2f점 입니다.", input2, input3, input4, input1, input5, input6);
 		
 		
 	}

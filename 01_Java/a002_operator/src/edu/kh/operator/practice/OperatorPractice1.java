@@ -8,12 +8,17 @@ public class OperatorPractice1 {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		int people = 29;
-		int candy = 100;
-		int result1 = candy / 29;
-		int result2 = candy % 29;
 		
-		System.out.println("1인당 사탕 개수 : " + result1);
+		System.out.print("인원 수 : ");
+		int candy1 = sc.nextInt();
+				
+		System.out.print("사탕 개수 : ");
+		int candy2 = sc.nextInt();
+	
+		int result1 = candy2 / candy1;
+		int result2 = candy2 % candy1;
+		
+		System.out.println("\n1인당 사탕 개수 : " + result1);
 		System.out.println("남은 사탕 개수 : " + result2);
 		
 		
