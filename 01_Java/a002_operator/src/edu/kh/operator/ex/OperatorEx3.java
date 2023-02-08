@@ -41,9 +41,21 @@ public class OperatorEx3 {
 				
 		
 		// 정수는 0부터 50 사이 숫자 또는 음수인가?
+		// == 50 이하인가?
 		int num5 = 3;
 		boolean result5 = num5 > 0  &&  num5 < 50 || num5 < 0 ;
+		
+		//boolean result5 = num5 <= 50;
 		System.out.println("0부터 50 사이 숫자 또는 음수? " + result5);
+		
+		
+		// 논리 부정 연산자 : ! (NOT)
+		// - 논리 값을 반대로 바꾸는 연산자
+		
+		// 11은 짝수가 아니다
+		System.out.println("11은 짝수가 아니다 : " + !(11 % 2 == 0) );
+		
+		System.out.println( true || false && !false ); // true 
 		
 		
 		
