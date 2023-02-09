@@ -213,13 +213,21 @@ public class ConditionEx {
 		} else if(age < 12){
 			result = "적정 연령이 아닙니다.";
 		} else {
-			// else 내부에서는 age가 정상 읿력으로 판단됨
+			// else 내부에서는 age가 정상 입력으로 판단됨
 			
 			System.out.print("키 입력 : ");
 			double height = sc.nextDouble();
 			
-		}
+			if(height < 100 || height > 220) {
+				result = "잘못 입력 하셨습니다.";
+			}else if(height < 140) {
+				result = "적정 키가 아닙니다.";
+			}else {
+				result = "탑승 가능";
+			}
+		} // age else 끝
 		
+		System.out.println(result);
 	}
 	
 	
