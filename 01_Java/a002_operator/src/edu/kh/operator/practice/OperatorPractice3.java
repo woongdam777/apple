@@ -10,8 +10,10 @@ public class OperatorPractice3 {
 		
 		System.out.print("정수 입력 : ");
 		int input = sc.nextInt();
+		
 		String result = input == 0 ? "0 입니다." : input > 0 ? "양수 입니다." : "음수 입니다.";
-				System.out.println(result);
+		
+		System.out.println(result);
 		
 		
 		

@@ -9,19 +9,25 @@ public class OperatorPractice2 {
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.print("이름 : ");
-		String input1 = sc.next();
+		String input1 = sc.next(); // 단어 입력
+		
 		System.out.print("학년 : ");
 		int input2 = sc.nextInt();
+		
 		System.out.print("반 : ");
 		int input3 = sc.nextInt();
+		
 		System.out.print("번호 : ");
 		int input4 = sc.nextInt();
+		
 		System.out.print("성별 : ");
 		String input5 = sc.next();
+		
 		System.out.print("성적 : ");
 		double input6 = sc.nextDouble();
 		
-		System.out.printf("\n%d학년 %d반 %d번 %s %s의 성적은 %.2f점 입니다.", input2, input3, input4, input1, input5, input6);
+		System.out.printf("\n%d학년 %d반 %d번 %s %s의 성적은 %.2f점 입니다.",
+						input2, input3, input4, input1, input5, input6);
 		
 		
 	}

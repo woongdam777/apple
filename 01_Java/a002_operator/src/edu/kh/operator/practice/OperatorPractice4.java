@@ -18,10 +18,14 @@ public class OperatorPractice4 {
 		int sum = input1 + input2 + input3;
 		System.out.println("\n합계 : " + sum);
 		
-		double ang = sum / 3;
-		System.out.println("평균 : " + ang);
+		double avg = sum / 3.0;
+						// (double)
 		
-		String result = input1 >= 40 && input2 >= 40 && input3 >= 40 && ang >= 60 ? "합격" : "불합격";
+		System.out.println("평균 : " + avg);
+		
+		String result = input1 >= 40 && input2 >= 40 && input3 >= 40 && avg >= 60
+						? "합격" : "불합격";
+	
 		System.out.println(result);
 		
 		
