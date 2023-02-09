@@ -10,11 +10,18 @@ public class ConditionRun {
 		// (지금은 이렇게만 알아두세요!)
 		ConditionEx condition = new ConditionEx();
 		
-		condition.test1();
-		condition.test2();
-		condition.test3();
+//		condition.test1();
+//		condition.test2();
+//		condition.test3();
 		
-		condition.ex1();
+//		condition.ex1();
+//		condition.ex2();
+		
+//		condition.ex3();
+//		condition.ex4();
+//		condition.ex5();
+		condition.ex6();
+		
 		
 	}
 	
