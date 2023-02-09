@@ -108,10 +108,10 @@ public class ConditionPractice {
 		System.out.print("기말 고사 점수 : ");
 		int fs = sc.nextInt();
 		
-		System.out.print("중간 고사 점수 : ");
+		System.out.print("과제 점수 : ");
 		int ws = sc.nextInt();
 		
-		System.out.print("중간 고사 점수 : ");
+		System.out.print("출석 횟수 : ");
 		int ds = sc.nextInt();
 		
 		System.out.println("================== 결과 ==================");
