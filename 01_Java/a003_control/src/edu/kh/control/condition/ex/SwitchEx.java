@@ -185,6 +185,66 @@ public class SwitchEx {
 			
 	}
 	
+//	고민해보기 flag변수를 이용하여 코드 간단하게 만들기
+//	
+//	public void ex4v2() {
+//		// 산술 연산 계산기 만들기 ver.2
+//		
+//		Scanner sc = new Scanner(System.in);
+//		
+//		System.out.print("정수1 입력 : ");
+//		int num1 = sc.nextInt();
+//		
+//		System.out.print("연산자 입력 : ");
+//		String op = sc.next();
+//		
+//		System.out.print("정수2 입력 : ");
+//		int num2 = sc.nextInt();
+//		
+//		int result = 0; // 연산 결과 저장용 변수
+//		
+//		/* 임의의 변수를 하나 생성하여 저장되는 값에 의미를 부여*/
+//		int flag = 0; 
+//		// 정상적인 연산인 경우 0 
+//		// 연산자가 잘못된 경우 -1
+//		// 0으로 나눈 경우 -2 라고 의미 부여
+//		
+//		switch(op) {
+//		case "+" : result = num1 + num2; break;
+//		case "-" : result = num1 - num2; break;
+//		case "*" : result = num1 * num2; break;
+//		
+//		case "/" : 
+//			if(num2 == 0) { // 나누는 값이 0인 경우
+//				flag = -2; // flag 변수의 값을 -2로 변경
+//			}else {
+//				result = num1 / num2;
+//			}
+//			break;
+//			
+//		case "%" : 
+//			if(num2 == 0) { // 나누는 값이 0인 경우
+//				flag = -2; // flag 변수의 값을 -2로 변경
+//			}else {
+//				result = num1 % num2;
+//			}
+//			break;
+//		
+//		default : flag = -1; // 연산자가 잘못된 경우 flag 변수의 값을 -1로 변경
+//		}
+//		
+//		
+//		if(flag == 0) {
+//			System.out.printf("%d %s %d = %d \n",num1, op ,num2, result);
+//		} else if(flag == -1) {
+//			System.out.println("존재하지 않는 연산자 입니다.");
+//		} else {
+//			System.out.println("0으로 나눌 수 없습니다.");
+//		}
+//	}
+//	
+//	
+	
 	
 	// switch 예시 5 : break의 사용 역할
 	
