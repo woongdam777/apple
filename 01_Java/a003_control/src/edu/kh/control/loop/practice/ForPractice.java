@@ -138,16 +138,91 @@ public class ForPractice {
 			for(int x=i;x<=input-1;x++) {
 			System.out.print(" ");
 			}
-			for(int x=i;x<=i;x++) {
+			for(int x=1;x<=i;x++) {
 				System.out.print("*");
 			}
-	
 			System.out.println();
 		}
 	}
 	
+	public void practice10() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("정수 입력 : ");
+		int input = sc.nextInt();
+		
+		for(int i=1;i<=input;i++) {
+			for(int x=1;x<=i;x++) {
+				System.out.print("*");
+			}
+			System.out.println();
+		}	
+		for(int i=input-1;i>=1;i--) {
+			for(int j=i;j>=1;j--){
+				System.out.print("*");
+			}
+			System.out.println();
+		}
+	}
 	
+	public void practice11() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("정수 입력 : ");
+		int input = sc.nextInt();
+		
+		for(int i=1;i<=input;i++) {
+			for(int x=input-1;x>=i;x--)
+				System.out.print(" ");
+			for(int j=1;j<=i*2-1;j++) {
+				System.out.print("*");
+			}
+			System.out.println();	
+		}
+	}
 	
+	public void practice12() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("정수 입력 : ");
+		int input = sc.nextInt();
+		
+		for(int i=1;i<=input;i++) {
+			System.out.print("*");
+		}
+		System.out.println();
+		
+		for(int i=1;i<=input-2;i++) {
+			System.out.print("*");
+			
+			for(int x=1;x<=input-2;x++ ) {
+				System.out.print(" ");
+			}
+			System.out.print("*");
+			System.out.println();
+		}
+		
+		for(int i=1;i<=input;i++) {
+			System.out.print("*");
+		}
+	}
 	
+	public void practice13() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("자연수 하나를 입력하세요 : ");
+		int input = sc.nextInt();
+		
+		int count=0;
+		
+		for(int i=1;i<=input;i++) {
+			
+			if(i%2==0 || i%3==0) {
+				System.out.printf("%d ",i);
+			}
+
+			if(i%2==0 && i%3==0) {
+				count++;
+			}
+		}
+		System.out.println();
+		System.out.println("count : " + count);
+	}
 	
 }
