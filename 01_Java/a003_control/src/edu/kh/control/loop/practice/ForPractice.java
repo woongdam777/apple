@@ -185,24 +185,48 @@ public class ForPractice {
 		int input = sc.nextInt();
 		
 		for(int i=1;i<=input;i++) {
-			System.out.print("*");
-		}
-		System.out.println();
-		
-		for(int i=1;i<=input-2;i++) {
-			System.out.print("*");
-			
-			for(int x=1;x<=input-2;x++ ) {
-				System.out.print(" ");
+			if(i == 1 || i == input) {
+				for(int j=1;j<=input;j++) {
+					System.out.print("*");
+				}
+			}else{
+				for(int k=1;k<=input;k++) {
+					if(k == 1 || k == input) {
+						System.out.print("*");
+					}else {
+						System.out.print(" ");
+					}
+				}
 			}
-			System.out.print("*");
 			System.out.println();
 		}
-		
-		for(int i=1;i<=input;i++) {
-			System.out.print("*");
-		}
 	}
+
+	
+//  의식의 흐름대로 시행착오 결과는 같음	
+//	public void practice12() { 
+//		Scanner sc = new Scanner(System.in);
+//		System.out.print("정수 입력 : ");
+//		int input = sc.nextInt();
+//		for(int i=1;i<=input;i++) {
+//			System.out.print("*");
+//		}
+//		System.out.println();
+//		
+//		for(int i=1;i<=input-2;i++) {
+//			System.out.print("*");
+//			
+//			for(int x=1;x<=input-2;x++ ) {
+//				System.out.print(" ");
+//			}
+//			System.out.print("*");
+//			System.out.println();
+//		}
+//		
+//		for(int i=1;i<=input;i++) {
+//			System.out.print("*");
+//		}
+	
 	
 	public void practice13() {
 		Scanner sc = new Scanner(System.in);
