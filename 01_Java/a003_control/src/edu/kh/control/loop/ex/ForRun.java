@@ -18,7 +18,8 @@ public class ForRun {
 //		 fx.ex10();
 //		 fx.ex11();
 //		 fx.ex12();
-		 fx.ex13();
+//		 fx.ex13();
+		 fx.ex14();
 		
 	}
 }

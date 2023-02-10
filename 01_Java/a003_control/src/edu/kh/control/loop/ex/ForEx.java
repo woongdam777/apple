@@ -316,9 +316,45 @@ public class ForEx {
 		for(int i=9;i>=1;i--) {
 			System.out.printf("%d x %d = %2d \n",num,i,num*i);
 		}
+	}
+	
+	// for문 응용 사용법 8
+	public void ex14() {
 		
+		// 입력 받은 단의 구구단 출력하기
+		// 단, 입력 받은 단이 2~9사이가 아니라면
+		// "잘못 입력 하셨습니다."출력
+		
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.print("단 입력 : ");
+		int input = sc.nextInt();
+		
+		if(input > 9) {
+			
+			System.out.print("잘못 입력 하셨습니다.");
+		
+		}else {
+		
+		for(int i=1 ; i <= 9;i++) {
+				System.out.printf("%d x %d = %2d \n",input,i,input*i);
+			}
+			
+		}
+				
+				
 		
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
