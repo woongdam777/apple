@@ -5,5 +5,5 @@
  * @author user1
  *
  */
-module a004_array {
+module a005_opp {
 }

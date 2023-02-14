@@ -49,9 +49,26 @@ public class ArrayPractice {
 	
 	public void practice4() {
 		Scanner sc = new Scanner(System.in);
-		int[] arr4= new int[4];
 		
-		System.out.print("입력 0:");
+		int[] arr4= new int[5];
+		
+		for(int i=0;i<arr4.length;i++) {
+			System.out.print("입력 " + i +" : ");
+			arr4[i]=sc.nextInt();
+		}
+	    System.out.print("검색할 값 : ");
+		int input = sc.nextInt();
+		boolean flag = ture;
+		
+		for(int i=0;i<arr4.length;i++) {
+			if(ture) {
+				System.out.print("인덱스 : " + i);
+				
+			}
+			System.out.println("일치하는 값이 존재하지 않습니다.");
+		}	
+		
+
 	}
 	
 	
