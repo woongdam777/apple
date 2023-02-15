@@ -219,33 +219,74 @@ public class ArrayPractice {
 	
 	public void practice11() {
 		
-		
 		int[] arr = new int[10];
 		
-		
 		for(int i=0;i<arr.length;i++) {
-			
 			arr[i]=(int)(Math.random()*10+1);
 				
 				for(int k=0;k<i;k++) {
-					
-					while(arr[k] == arr[i]) {
-						
-						arr[i]=(int)(Math.random()*10+1);
-						
-						continue;
+					if(arr[k]==arr[i]){
+						i--;
 					}
-				}
-				System.out.print(arr[i]+" ");
+				}	
 		}
+		for(int x=0;x<arr.length;x++) {
+			System.out.print(arr[x]+ " ");
+		}
+	}			
+						
+			
 		
-	}
 	
 	public void practice12() {
-		
+		int[] arr = new int[6];
+		for(int i=0;i<arr.length;i++) {
+			arr[i]=(int)(Math.random()*45+1);
+			
+				for(int x=0;x<i;x++) {
+					if(arr[x]==arr[i]) {
+						i--;
+					}
+				}
+		}
+		for(int k=0;k<arr.length-1;k++) {
+			for(int y=0;y<arr.length-1-k;y++) {
+				if(arr[y]>arr[y+1]) {
+					int max=arr[y];
+					arr[y]=arr[y+1];
+					arr[y+1]=max;					
+				}
+			}
+		}
+		for(int z=0;z<arr.length;z++) {
+		System.out.print(arr[z] + " ");
+		}
 	}
 	
 	public void practice13() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("문자열 : ");
+		String input = sc.next();
+		char[] arr = new char[input.length()];
+		int index = 0;
+		for(int i=0;i<arr.length;i++) {
+			arr[i]=input.charAt(i);
+			for(int k=0;k<i;k++) {
+				if(arr[k] == arr[i]) {
+					i--;
+				}
+			}
+			System.out.println(Arrays.toString(arr));
+		}
+		System.out.println();
+		
+	}
+	
+	public void practice14() {
+		
+	}
+	
+	public void practice15() {
 		
 	}
 	
