@@ -8,13 +8,15 @@ public class BasicRun {
 		//					  new 연산자를 통해 메모리에 생성되는 것
 		
 		// 국민 객체 생성 - Nation이라는 클래스에 n1이라는 새로운 Nation속성에 맞는 객체를 선언 
-		Nation n1 = new Nation();
+		Nation n1 = new Nation(); //국민 1명 생성
+		Nation n2 = new Nation(); 
+		Nation n3 = new Nation();
 		
 		// 특정짓게됨
 		//n1.pNo = "990123-1234567";
 		n1.setpNo("990123-1234567(간접 접근 이용)"); // [캡슐화]
 		
-		n1.name = "홍길동";
+		n1.name = "홍길동"; // 직접 접근 [캡슐화 원칙에 위배]
 		n1.gender = '남';
 		n1.address = "서울시 중구 남대문로 120";
 		n1.phone = "010-1234-1234";
