@@ -221,15 +221,22 @@ public class ArrayPractice {
 		
 		
 		int[] arr = new int[10];
+		
+		
 		for(int i=0;i<arr.length;i++) {
-			arr[i]=(int)(Math.random()*10+1);
 			
-			for(int k=0;k<i;k++) {
-				if(arr[k]!=arr[i]) {
-					System.out.print(arr[i]+" ");	
+			arr[i]=(int)(Math.random()*10+1);
+				
+				for(int k=0;k<i;k++) {
+					
+					while(arr[k] == arr[i]) {
+						
+						arr[i]=(int)(Math.random()*10+1);
+						
+						continue;
+					}
 				}
-			}
-			continue;
+				System.out.print(arr[i]+" ");
 		}
 		
 	}
