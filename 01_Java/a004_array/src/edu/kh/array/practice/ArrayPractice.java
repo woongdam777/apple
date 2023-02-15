@@ -152,8 +152,19 @@ public class ArrayPractice {
 		Scanner sc = new Scanner(System.in);
 		
 		
-		System.out.print("정수 : ");
-		int input = sc.nextInt();
+		int input = 0;
+		do{
+			System.out.print("정수 : ");
+		    input = sc.nextInt();
+		    
+		    if(input % 2 ==1 && input >=3) {
+		    	break;
+		    }
+		    System.out.println("다시 입력하세요.");
+			
+		} while(input % 2 != 1 || input < 3); //홀수이거나 3이상이면 멈춤
+		
+		
 		int[] arr = new int[input];
 		for(int i=0;i<(int)(arr.length/2);i++) {
 		
@@ -162,25 +173,64 @@ public class ArrayPractice {
 		}
 		for(int i=(int)(arr.length/2+1); i>0;i--) {
 			arr[i]=i;
-			System.out.print(arr[i]+", ");
+			if(i==1) {
+				System.out.print(arr[i]);
+			}else {
+				System.out.print(arr[i]+", ");
+			}
 		}
-		
-//		if(input%2 != 1 || input < 3) {
-//			System.out.print("다시 입력하세요.");
-//			continue;
-//		}
-		
 	}
 	
 	public void practice9() {
-		
+		System.out.print("발생한 난수 : ");
+		int[] arr = new int[10];
+		for(int i=0;i<arr.length;i++) {
+			arr[i]=(int)(Math.random()*10);
+			
+			System.out.print(arr[i]+" ");
+		}
 	}
 	
 	public void practice10() {
 		
+
+		
+		System.out.print("발생한 난수 : ");
+		int[] arr = new int[10];
+		int max = 0;
+		int min = 90;
+		
+		for(int i=0;i<arr.length;i++) {
+			arr[i]=(int)(Math.random()*10+1);
+			
+			System.out.print(arr[i]+" ");
+		
+			if(arr[i] > max) {
+				max = arr[i];
+			}
+			if(arr[i] < min) {
+				min = arr[i];
+			}
+		}
+		System.out.println();
+		System.out.println("최대값 : "+ max);
+		System.out.println("최소값 : "+ min);
 	}
 	
 	public void practice11() {
+		
+		
+		int[] arr = new int[10];
+		for(int i=0;i<arr.length;i++) {
+			arr[i]=(int)(Math.random()*10+1);
+			
+			for(int k=0;k<i;k++) {
+				if(arr[k]!=arr[i]) {
+					System.out.print(arr[i]+" ");	
+				}
+			}
+			continue;
+		}
 		
 	}
 	

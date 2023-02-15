@@ -12,7 +12,11 @@ public class ArrayPracticeRun {
 //		ar.practice5();
 //		ar.practice6();
 //		ar.practice7();
-		ar.practice8();
+//		ar.practice8();
+//		ar.practice9();
+//		ar.practice10();
+		ar.practice11();
+//		ar.practice12();
 		
 	}
 }
