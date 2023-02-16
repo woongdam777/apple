@@ -268,21 +268,29 @@ public class ArrayPractice {
 		System.out.print("문자열 : ");
 		String input = sc.next();
 		char[] arr = new char[input.length()];
+		
 		int index = 0;
-		for(int i=0;i<arr.length;i++) {
-			arr[i]=input.charAt(i);
-			for(int k=0;k<i;k++) {
-				if(arr[k] == arr[i]) {
-					i--;
+		boolean flag = true;
+			for(int i =0;i<arr.length;i++) {
+				for(int x=0;x<i;x++) {
+					if(arr[x] == arr[i]) {
+						flag = true;
+					}
+					index=i;
 				}
 			}
-			System.out.println(Arrays.toString(arr));
-		}
-		System.out.println();
 		
 	}
 	
 	public void practice14() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("배열의 크기를 입력하세요 : ");
+		int size = sc.nextInt();
+		String[] arr= new String[size];
+		for(int i=0;i<size;i++) {
+			System.out.print(i+1 + "번째 문자열 : ");
+			arr[i]=sc.next();
+		}
 		
 	}
 	
