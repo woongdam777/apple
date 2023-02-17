@@ -269,32 +269,147 @@ public class ArrayPractice {
 		String input = sc.next();
 		char[] arr = new char[input.length()];
 		
-		int index = 0;
-		boolean flag = true;
-			for(int i =0;i<arr.length;i++) {
-				for(int x=0;x<i;x++) {
-					if(arr[x] == arr[i]) {
-						flag = true;
-					}
-					index=i;
+			
+		for(int i =0;i<arr.length;i++) {
+			
+			boolean flag = false;
+			arr[i]=input.charAt(i);
+			for(int x=0;x<i;x++) {
+				if(arr[x] == arr[i]) {
+					flag = true;
+					break;
 				}
 			}
+			if(flag==false) {
+				System.out.print(arr[i] + " ");
+			}
+		}
+		System.out.println();	
 		
 	}
 	
 	public void practice14() {
 		Scanner sc = new Scanner(System.in);
 		System.out.print("배열의 크기를 입력하세요 : ");
-		int size = sc.nextInt();
+		int size = sc.nextInt(); sc.nextLine();
 		String[] arr= new String[size];
 		for(int i=0;i<size;i++) {
 			System.out.print(i+1 + "번째 문자열 : ");
-			arr[i]=sc.next();
+			arr[i]=sc.nextLine();
+		}
+		
+		System.out.print("더 값을 입력하시겠습니까?(Y/N)");
+		char key = sc.next().charAt(0);
+		if( key =='y') {
+			System.out.print("더 입력하고 싶은 개수 : ");
+			int num = sc.nextInt();
+			String[] arr2=new String[size+num];
+			for(int x=0;x<size+num;x++) {
+				if(x<size) {
+					arr2[x]=arr[x];
+					continue;
+				}
+				System.out.print(x+1 + "번째 문자열 : ");
+				arr2[x]=sc.next();
+			}
+			
+			System.out.println(Arrays.toString(arr2));
+			
+		}else {
+			System.out.println(Arrays.toString(arr));
 		}
 		
 	}
 	
 	public void practice15() {
+		
+		String[][] arr = new String[3][3];
+		
+		for(int i=0;i<arr.length;i++) {
+			for(int x=0;x<arr[0].length;x++) {
+				arr[i][x] = "(" + i + ", " + x + ")";
+				System.out.print(arr[i][x]);
+			}
+			System.out.println();
+		}
+	}
+	
+	public void practice16() {
+		
+		int[][] arr = new int[4][4];
+		int k = 1;
+		
+		for(int i=0;i<arr.length;i++) {
+			for(int x=0;x<arr[0].length;x++) {
+				arr[i][x]=k++;
+				System.out.printf("%3d",arr[i][x]);
+			}
+			System.out.println();
+		}
+		
+		
+	}
+	
+	public void practice17() {
+		
+		int[][] arr = new int[4][4];
+		int k = 16;
+		
+		for(int i=0;i<arr.length;i++) {
+			for(int x=0;x<arr[0].length;x++) {
+				arr[i][x]=k--;
+				System.out.printf("%3d",arr[i][x]);
+			}
+			System.out.println();
+		}
+		
+		
+		
+		
+	}
+	
+	public void practice18() {
+		
+		int[][] arr=new int[4][4];
+		
+		
+		for(int i =0; i<arr.length-1;i++) {
+			int rowsum = 0;
+				for(int x=0;x<arr[0].length;x++) {
+					if(x<arr[0].length-1) {
+						arr[i][x]=(int)(Math.random()*10+1);
+						rowsum += arr[i][x];
+					}else {
+						arr[i][x]=rowsum;
+					}
+					System.out.printf("%3d",arr[i][x]);
+				}
+			System.out.println();
+		}
+		
+		for(int x=0;x<arr[0].length;x++) {
+			int colsum = 0;
+			for(int i=0;i<arr[0].length-1;i++) {
+				colsum +=arr[i][x]; 
+			}
+			arr[arr.length-1][x] = colsum;
+			System.out.printf("%3d",arr[arr.length-1][x]);
+		}
+	}
+	
+	public void practice19() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("행 크기 : ");
+		int num1 = sc.nextInt();
+		System.out.print("열 크기 : ");
+		int num2 = sc.nextInt();
+		
+		if(num1>10 || num1<1 || num2>10 || num2<1 ) {
+			System.out.println("반드시 1~10 사이의 정수를 입력해야 합니다.");
+		}
+	}
+	
+	public void practice20() {
 		
 	}
 	
