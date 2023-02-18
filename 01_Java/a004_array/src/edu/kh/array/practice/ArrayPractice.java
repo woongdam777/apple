@@ -510,18 +510,165 @@ public class ArrayPractice {
 		Scanner sc = new Scanner(System.in);
 		System.out.print("검색할 학생 이름을 입력하세요 : ");
 		String name = sc.next();
-
-		System.out.println(name.equals(arr));
 		
+		int num1 = 0;
+		int num2 = 0; 
+		String num3 = ""; 
 		
+		for(int i=0;i<arr.length;i++) {
+			for(int x=0;x<arr[0].length;x++) {
+				if(name.equals(arr[i][x])) {
+					num1 = 1;
+					num2=i+1;
+					if(x==0) {
+						num3="왼쪽";
+					}else {
+						num3="오른쪽";
+					}
+				}
+			}
+		}
 		
+		for(int i=0;i<arr2.length;i++) {
+			for(int x=0;x<arr2[0].length;x++) {
+				if(name.equals(arr2[i][x])) {
+					num1 = 2;
+					num2=i+1;
+					if(x==0) {
+						num3="왼쪽";
+					}else {
+						num3="오른쪽";
+					}
+				}
+			}
+		}
 		
-//		System.out.printf("검색하신 %s 학생은 %d분단 %d번째 줄 2에 있습니다.",name,);
+		System.out.printf("검색하신 %s 학생은 %d분단 %d번째 줄 %s에 있습니다.",name,num1,num2,num3);
 	}
 	
 	public void practice23() {
 		
+		String[][] arr=new String[6][6];
+		
+		for(int i=0;i<arr.length;i++) {
+			
+			if(i==0) {
+				int hi = 0;
+				int hii = 0;
+				for(int x=0;x<arr[0].length;x++) {
+					arr[i][x]=" ";
+					if(x>0) {
+						arr[i][x]=" "+hi++;
+						arr[x][i]=" "+hii++;
+					}
+				}
+			}
+			if(i>0) {
+				for(int x=0;x<arr[0].length;x++) {
+					if(x>0) {
+						 arr[i][x]=" ";
+					}
+				}
+			}
+		}
+	
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.print("행 인덱스 입력 : ");
+		int row = sc.nextInt();
+		System.out.print("열 인덱스 입력 : ");
+		int col = sc.nextInt();
+		
+		arr[row+1][col+1]="X";
+
+		for(int i=0;i<arr.length;i++) {
+			for(int x=0;x<arr[0].length;x++) {
+				System.out.printf("%2s",arr[i][x]);
+			}	
+			System.out.println();
+		}
 	}
+	
+	public void practice24(){
+		
+		
+		String[][] arr=new String[6][6];
+		
+		for(int i=0;i<arr.length;i++) {
+			
+			if(i==0) {
+				int hi = 0;
+				int hii = 0;
+				for(int x=0;x<arr[0].length;x++) {
+					arr[i][x]=" ";
+					if(x>0) {
+						arr[i][x]=" "+hi++;
+						arr[x][i]=" "+hii++;
+					}
+				}
+			}
+			if(i>0) {
+				for(int x=0;x<arr[0].length;x++) {
+					if(x>0) {
+						 arr[i][x]=" ";
+					}
+				}
+			}
+		}
+	
+		while(true) {
+			
+			
+			Scanner sc = new Scanner(System.in);
+			System.out.print("행 인덱스 입력 : ");
+			int row = sc.nextInt();
+			
+			if(row == 99) {
+				System.out.println("프로그램 종료");
+				break;
+			}
+			
+			System.out.print("열 인덱스 입력 : ");
+			int col = sc.nextInt();
+			
+			arr[row+1][col+1]="X";
+	
+			for(int i=0;i<arr.length;i++) {
+				for(int x=0;x<arr[0].length;x++) {
+					System.out.printf("%2s",arr[i][x]);
+				}	
+				System.out.println();
+			}
+			
+			System.out.println();
+		}
+		
+		
+	}
+	
+	public void practicebonus(){
+		Scanner sc = new Scanner(System.in);
+		System.out.print("빙고판 크기 지정 : ");
+		int size = sc.nextInt();
+		int[][] arr = new int[size][size];
+		
+		for(int row =0;row<arr.length;row++) {
+			for(int col =0;col<arr[0].length;col++) {
+				arr[row][col]=(int)(Math.random()*size*size+1);
+			}
+		}
+		
+		for(int row =0;row<arr.length;row++) {
+			for(int col =0;col<arr[0].length;col++) {
+				System.out.printf("%4d",arr[row][col]);
+			}
+			System.out.println();
+		}
+		
+		
+		
+	}
+	
 	
 	
 }
