@@ -22,7 +22,12 @@ public class ArrayPracticeRun {
 //		ar.practice15();
 //		ar.practice16();
 //		ar.practice17();
-		ar.practice18();
+//		ar.practice18();
+//		ar.practice19();
+//		ar.practice20();
+//		ar.practice21();
+		ar.practice22();
+//		ar.practice23();
 		
 	}
 }

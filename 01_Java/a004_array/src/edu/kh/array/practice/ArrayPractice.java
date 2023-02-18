@@ -399,17 +399,127 @@ public class ArrayPractice {
 	
 	public void practice19() {
 		Scanner sc = new Scanner(System.in);
-		System.out.print("행 크기 : ");
-		int num1 = sc.nextInt();
-		System.out.print("열 크기 : ");
-		int num2 = sc.nextInt();
+		int num1 =0;
+		int num2 =0;
 		
-		if(num1>10 || num1<1 || num2>10 || num2<1 ) {
+		while(true) {
+			System.out.print("행 크기 : ");
+			num1 = sc.nextInt();
+			System.out.print("열 크기 : ");
+			num2 = sc.nextInt();
+			
+			if(num1>=1 && num1<=10 && num2>=1 && num2<10 ) {
+				break;
+			}
 			System.out.println("반드시 1~10 사이의 정수를 입력해야 합니다.");
 		}
+		char[][] arr = new char[num1][num2];
+		for(char i=0;i<num1;i++) {
+			for(char x=0;x<num2;x++) {
+				arr[i][x]=(char)(65+(int)(Math.random()*26));
+				System.out.printf("%2c",arr[i][x]);
+			}
+			System.out.println();
+		}
+		
 	}
 	
 	public void practice20() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("행의 크기 : ");
+		int input = sc.nextInt();
+		char[][] arr= new char[input][];
+		int sum = 0;
+		
+		for(int i=0;i<input;i++) {
+			System.out.printf("%d열의 크기 : ",i);
+			int input2 = sc.nextInt();
+			arr[i]=new char[input2];
+			for(int x=0;x<input2;x++) {
+				arr[i][x]=(char)('a'+ x+sum);
+			}
+			sum += input2;
+		}
+		for(int i=0;i<arr.length;i++) {
+			char[] arr2 = arr[i];
+			for(int x=0;x<arr2.length;x++) {
+				System.out.print(arr2[x]+" ");
+			}
+			System.out.println();
+		}
+	}
+	
+	public void practice21() {
+		String[] students = {"강건강", "남나나", "도대담", "류라라", "문미미", "박보배", 
+				"송성실", "윤예의", "진재주", "차천축", "피풍표", "홍하하"};
+		String[][] arr = new String[3][2];
+		String[][] arr2 = new String[3][2];
+		
+		int index = 0;
+		System.out.println("== 1분단 ==");
+		for(int i=0;i<arr.length;i++) {
+			for(int x=0;x<arr[0].length;x++) {
+				arr[i][x]=students[index];
+				index++;
+				System.out.print(arr[i][x] + " ");
+			}
+			System.out.println();
+		}
+		if(index>5) {
+			System.out.println("== 2분단 ==");
+			for(int i=0;i<arr2.length;i++) {
+				for(int x=0;x<arr2[0].length;x++) {
+					arr2[i][x]=students[index];
+					System.out.print(arr2[i][x] + " ");
+					index++;
+				}
+				System.out.println();
+			}
+		}
+	}
+	
+	public void practice22() {
+		String[] students = {"강건강", "남나나", "도대담", "류라라", "문미미", "박보배", 
+				"송성실", "윤예의", "진재주", "차천축", "피풍표", "홍하하"};
+		String[][] arr = new String[3][2];
+		String[][] arr2 = new String[3][2];
+		
+		int index = 0;
+		System.out.println("== 1분단 ==");
+		for(int i=0;i<arr.length;i++) {
+			for(int x=0;x<arr[0].length;x++) {
+				arr[i][x]=students[index];
+				index++;
+				System.out.print(arr[i][x] + " ");
+			}
+			System.out.println();
+		}
+		if(index>5) {
+			System.out.println("== 2분단 ==");
+			for(int i=0;i<arr2.length;i++) {
+				for(int x=0;x<arr2[0].length;x++) {
+					arr2[i][x]=students[index];
+					System.out.print(arr2[i][x] + " ");
+					index++;
+				}
+				System.out.println();
+			}
+		}
+		
+		System.out.println("==============================");
+		Scanner sc = new Scanner(System.in);
+		System.out.print("검색할 학생 이름을 입력하세요 : ");
+		String name = sc.next();
+
+		System.out.println(name.equals(arr));
+		
+		
+		
+		
+//		System.out.printf("검색하신 %s 학생은 %d분단 %d번째 줄 2에 있습니다.",name,);
+	}
+	
+	public void practice23() {
 		
 	}
 	
