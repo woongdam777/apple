@@ -654,7 +654,30 @@ public class ArrayPractice {
 		
 		for(int row =0;row<arr.length;row++) {
 			for(int col =0;col<arr[0].length;col++) {
-				arr[row][col]=(int)(Math.random()*size*size+1);
+				
+				//중복검사
+				while(true) {
+					arr[row][col]=(int)(Math.random()*size*size+1);
+					boolean flag = false;
+					
+					for(int i=0;i<=row;i++) {
+						for(int x=0;x<arr[0].length;x++) {
+							if(i==row && x>=col) {
+								break;
+							}
+							if(arr[i][x] == arr[row][col]) {
+								flag = true;
+								break;
+							}
+						}
+						if(flag) {
+							break;
+						}
+					}
+					if(!flag) {
+						break;
+					}
+				}
 			}
 		}
 		
@@ -664,6 +687,54 @@ public class ArrayPractice {
 			}
 			System.out.println();
 		}
+		
+		System.out.println("=========빙고게임시작=========");
+		int count = 0;
+		while(count<3) {
+			System.out.print("정수를 입력하시오 : ");
+			int key = sc.nextInt();
+			boolean flag = false;
+			
+			for(int row =0;row<arr.length;row++) {
+				for(int col =0;col<arr[0].length;col++) {
+					if(arr[row][col] == key) {
+						arr[row][col] = -1;
+						flag = true;
+						break;
+					}
+				}
+				if(flag) {
+					break;
+				}
+			}
+				
+			if(!flag) {
+				System.out.println("다시 입력해주세요.");
+				continue;
+			}
+			
+			for(int row =0;row<arr.length;row++) {
+				for(int col =0;col<arr[0].length;col++) {
+					if(arr[row][col] == -1) {
+						System.out.print("★ ");
+						count++;
+					}else {
+						System.out.print(arr[row][col]+ " ");
+					}
+				}
+				System.out.println();
+			}
+			
+			
+			
+		}		
+			
+			
+				System.out.println(Arrays.deepToString(arr));
+				
+//				System.out.print("현재 %d빙고");
+		
+			
 		
 		
 		
