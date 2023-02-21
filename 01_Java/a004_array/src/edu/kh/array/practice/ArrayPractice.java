@@ -376,7 +376,7 @@ public class ArrayPractice {
 		for(int i =0; i<arr.length-1;i++) {
 			int rowsum = 0;
 				for(int x=0;x<arr[0].length;x++) {
-					if(x<arr[0].length-1) {
+					if(x<arr[i].length-1) {
 						arr[i][x]=(int)(Math.random()*10+1);
 						rowsum += arr[i][x];
 					}else {
@@ -695,6 +695,7 @@ public class ArrayPractice {
 			int key = sc.nextInt();
 			boolean flag = false;
 			
+			// 중복값 -1로 변환 
 			for(int row =0;row<arr.length;row++) {
 				for(int col =0;col<arr[0].length;col++) {
 					if(arr[row][col] == key) {
@@ -703,16 +704,14 @@ public class ArrayPractice {
 						break;
 					}
 				}
-				if(flag) {
-					break;
-				}
 			}
-				
+			// 일치하는 값 없을때
 			if(!flag) {
 				System.out.println("다시 입력해주세요.");
 				continue;
 			}
 			
+			// 중복되는 -1 값 ★로 변환
 			for(int row =0;row<arr.length;row++) {
 				for(int col =0;col<arr[0].length;col++) {
 					if(arr[row][col] == -1) {
@@ -726,20 +725,30 @@ public class ArrayPractice {
 			}
 			
 			
+			// 빙고 검사
 			
-		}		
+			for(int row=0;row<arr.length;row++) {
+				for(int col=0 ; col<arr.length;col++) {
+					if(arr[row][col] == -1) {
+						count++;
+					}
+				}
+			}
+			
+		}	
 			
 			
-				System.out.println(Arrays.deepToString(arr));
+			
+			
+			
+			
+	}		
+			
+			
+//				System.out.println(Arrays.deepToString(arr));
 				
 //				System.out.print("현재 %d빙고");
 		
 			
-		
-		
-		
-	}
-	
-	
 	
 }
