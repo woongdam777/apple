@@ -2,8 +2,8 @@ package edu.kh.inheritance.dto;
 
 public class Parent {
 	
-	private int money; // 돈
-	private String lastName; // 성
+	private int money=500_000_000; // 돈
+	private String lastName="박"; // 성
 	
 	// 기본 생성자
 	public Parent() {
@@ -16,7 +16,7 @@ public class Parent {
 		this.money = money;
 		this.lastName = lastName;
 		
-		System.out.println("Parent(int, String 매개변수 생성자");
+		System.out.println("Parent(int, String) 매개변수 생성자");
 	}
 	
 	
