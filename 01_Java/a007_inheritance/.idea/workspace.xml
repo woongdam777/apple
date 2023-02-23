@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="931203c1-0517-41bf-ae90-f57f81b08148" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/edu/kh/inheritance/dto/Child1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/kh/inheritance/dto/Child1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edu/kh/inheritance/dto/Child2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/kh/inheritance/dto/Child2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../a004_array/src/edu/kh/array/practice/ArrayPractice.java" beforeDir="false" afterPath="$PROJECT_DIR$/../a004_array/src/edu/kh/array/practice/ArrayPractice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../a004_array/src/edu/kh/array/practice/ArrayPracticeRun.java" beforeDir="false" afterPath="$PROJECT_DIR$/../a004_array/src/edu/kh/array/practice/ArrayPracticeRun.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +22,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/workspace/01_java/01_Java/a007_inheritance"
+    "last_opened_file_path": "C:/workspace/01_java/01_Java"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
