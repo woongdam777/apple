@@ -18,7 +18,7 @@ public class ArrayPracticeRun {
 //		ar.practice11();
 //		ar.practice12();
 //		ar.practice13();
-//		ar.practice14();
+		ar.practice14();
 //		ar.practice15();
 //		ar.practice16();
 //		ar.practice17();
@@ -29,7 +29,7 @@ public class ArrayPracticeRun {
 //		ar.practice22();
 //		ar.practice23();
 //		ar.practice24();
-		ar.practicebonus();
-		
+//		ar.practicebonus();
+//		
 	}
 }
