@@ -833,12 +833,10 @@ public class ArrayPractice {
 		
 		for(int row =0;row<arr.length;row++) {
 			for(int col =0;col<arr[0].length;col++) {
-				
 				//중복검사
 				while(true) {
 					arr[row][col]=(int)(Math.random()*size*size+1);
 					boolean flag = false;
-					
 					for(int i=0;i<=row;i++) {
 						for(int x=0;x<arr[0].length;x++) {
 							if(i==row && x>=col) {
@@ -848,14 +846,8 @@ public class ArrayPractice {
 								flag = true;
 								break;
 							}
-						}
-						if(flag) {
-							break;
-						}
-					}
-					if(!flag) {
-						break;
-					}
+						}if(flag)break;
+					}if(!flag)break;
 				}
 			}
 		}
@@ -870,6 +862,7 @@ public class ArrayPractice {
 		System.out.println("=========빙고게임시작=========");
 		int count = 0;
 		while(count<3) {
+			int countnum = 0;
 			System.out.print("정수를 입력하시오 : ");
 			int key = sc.nextInt();
 			boolean flag = false;
@@ -895,7 +888,6 @@ public class ArrayPractice {
 				for(int col =0;col<arr[0].length;col++) {
 					if(arr[row][col] == -1) {
 						System.out.print("★ ");
-						count++;
 					}else {
 						System.out.print(arr[row][col]+ " ");
 					}
@@ -904,22 +896,46 @@ public class ArrayPractice {
 			}
 			
 			
-			// 빙고 검사
+			// 가로 빙고 검사
 			
 			for(int row=0;row<arr.length;row++) {
-				for(int col=0 ; col<arr.length;col++) {
-					if(arr[row][col] == -1) {
-						count++;
-					}
+				int bingoCount = 0;
+				for(int col=0 ; col<arr[0].length;col++) {
+					if(arr[row][col] == -1) bingoCount++;
+				}
+				if (bingoCount==size) {
+					count++;
 				}
 			}
+			System.out.println();
+			// 세로 빙고 검사
+			for(int row=0;row<arr.length;row++) {
+				int bingoCount = 0;
+				for(int col=0 ; col<arr.length;col++) {
+					if(arr[col][row] == -1) {
+						bingoCount++;
+					}
+					if (bingoCount==size) {
+						count++;
+						bingoCount=0;
+					}	
+				}
+			}
+			// 대각선 빙고 검사
+//			for(int row=0;row<arr.length;row++) {
+//				int bingo = 0;
+//				if(arr[row][row] == -1)	bingo++;
+//				if (bingo==arr.length) count++; 
+//			}
+//			for(int row=arr.length-1;row>=0;row--) {
+//				int bingo = 0;
+//				if(arr[row][arr.length-1-row] == -1) bingo++;
+//				if (bingo==arr.length) count++;
+//			}
+			
+			System.out.println("현재 "+count+"빙고");
 			
 		}	
-			
-			
-			
-			
-			
 			
 	}		
 			
