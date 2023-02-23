@@ -904,13 +904,27 @@ public class ArrayPractice {
 			}
 			
 			
-			// 빙고 검사
+			// 가로 빙고 검사
 			
 			for(int row=0;row<arr.length;row++) {
+				int bingocount = 0;
 				for(int col=0 ; col<arr.length;col++) {
 					if(arr[row][col] == -1) {
-						count++;
+						bingocount++;
 					}
+					bingocount = arr.length;
+					count++;		
+				}
+			}
+			
+			for(int row=0;row<arr.length;row++) {
+				int bingocount = 0;
+				for(int col=0 ; col<arr.length;col++) {
+					if(arr[col][row] == -1) {
+						bingocount++;
+					}
+					bingocount = arr.length;
+					count++;		
 				}
 			}
 			
