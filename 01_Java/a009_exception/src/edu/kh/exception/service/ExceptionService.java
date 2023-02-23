@@ -3,6 +3,7 @@ package edu.kh.exception.service;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ExceptionService {
@@ -112,10 +113,40 @@ public class ExceptionService {
 			
 			System.out.printf("%d / %d = %d \n", num1, num2, num1/num2);
 			
+			
+			
+//		}catch(Exception e) {
+			
 		}catch(ArithmeticException e) {
 			// 산술적 예외를 잡아 처리
 			System.out.println("0으로 나눌 수 없습니다.");
-		}finally {
+			
+		}catch(InputMismatchException e) {	
+			/** catch문 여러 개 작성 가능 **/
+			
+			/** 다형성 적용 가능(업캐스팅 **/
+			// -> 상위 타입 예외를 매개변수로 작성하면
+			//	  하위 타입의 예외를 모두 처리할 수 있다.
+			
+			// !!!!!!!! 주의 사항 !!!!!!!!
+			// - 상위 타입을 처리하는 catch문을
+			//   하위 타입을 처리하는 catch문 보다 먼저 작성하면 오류 발생
+			// Unreachable catch block for ArithmeticException. It is already handled by the catch block for Exception
+			
+			// 해결방법 : 상위 타입 catch를 뒤쪽에 배치해서 하위타입 catch에 대한 검사가 먼저 진행되게 한다
+			
+			
+			
+			// InputMismatchException
+			// 스캐너 사용시 작성법이 잘못되거나범위를 초과하면 발생하는 예외
+		  System.out.println("입력이 잘못되었습니다.");
+		
+		}catch(Exception e) {
+			System.out.println("예외가 발생해서 처리함");
+		}
+		
+		
+		finally {
 			// finally
 			// try-catch 구문이 끝난 후 마지막으로 수행
 			// ** 예외가 발생하든말든 무조건 실행 **
