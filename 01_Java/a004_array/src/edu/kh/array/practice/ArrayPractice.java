@@ -860,8 +860,8 @@ public class ArrayPractice {
 		}
 		
 		System.out.println("=========빙고게임시작=========");
-		int count = 0;
-		while(count<3) {
+		while(true) {
+			int count = 0;
 			int countnum = 0;
 			System.out.print("정수를 입력하시오 : ");
 			int key = sc.nextInt();
@@ -921,20 +921,25 @@ public class ArrayPractice {
 					}	
 				}
 			}
-			// 대각선 빙고 검사
-//			for(int row=0;row<arr.length;row++) {
-//				int bingo = 0;
-//				if(arr[row][row] == -1)	bingo++;
-//				if (bingo==arr.length) count++; 
-//			}
-//			for(int row=arr.length-1;row>=0;row--) {
-//				int bingo = 0;
-//				if(arr[row][arr.length-1-row] == -1) bingo++;
-//				if (bingo==arr.length) count++;
-//			}
-			
+//			 대각선 빙고 검사
+			for(int row=0;row<arr.length;row++) {
+				int bingo = 0;
+				if(arr[row][row] == -1)	bingo++;
+				if (bingo==arr.length) count++; 
+			}
+			for(int row=arr.length-1;row>=0;row--) {
+				int bingo = 0;
+				if(arr[row][arr.length-1-row] == -1) bingo++;
+				if (bingo==arr.length) count++;
+			}
+
 			System.out.println("현재 "+count+"빙고");
-			
+				
+			if(count>=3) {
+				System.out.println("***Bingo!***");
+				
+				break;
+			}
 		}	
 			
 	}		
