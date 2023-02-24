@@ -6,6 +6,8 @@ import java.io.InputStreamReader;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import edu.kh.exception.user.exception.ScoreInputException;
+
 public class ExceptionService {
 	
 	public void ex1() throws IOException  {
@@ -135,8 +137,6 @@ public class ExceptionService {
 			
 			// 해결방법 : 상위 타입 catch를 뒤쪽에 배치해서 하위타입 catch에 대한 검사가 먼저 진행되게 한다
 			
-			
-			
 			// InputMismatchException
 			// 스캐너 사용시 작성법이 잘못되거나범위를 초과하면 발생하는 예외
 		  System.out.println("입력이 잘못되었습니다.");
@@ -145,16 +145,12 @@ public class ExceptionService {
 			System.out.println("예외가 발생해서 처리함");
 		}
 		
-		
 		finally {
 			// finally
 			// try-catch 구문이 끝난 후 마지막으로 수행
 			// ** 예외가 발생하든말든 무조건 실행 **
 			System.out.println("프로그램 종료");
-			
-			
 		}
-		
 		
 		/* if로 간단하게 처리할 수 있음
 		 * if(num2 == 0){
@@ -163,10 +159,100 @@ public class ExceptionService {
 		 * 	 System.out.printf("%d / %d = %d \n", num1, num2, num1/num2);
 		 * }
 		 * */
+	}
+	
+	
+	public void ex4() {
+		
+		// throw : 예외 강제 발생 
+		//			ex) throw new IOException();
+		
+		// throws : 해당 메서드에서 발생한 예외를 호출한 메서드로 던져버리는 예외처리방법
+		
+		System.out.println("ex4() 실행");
+		
+		try {
+			methodA();
+			
+		}catch(IOException e){
+//			e.getMessage();
+			
+			e.printStackTrace();
+			// Trace : 추적하다
+			// -> 예외가 발생한 지점까지의 stack 모모리를 추적하여 출력
+			
+			System.out.println("catch문 처리");
+		}
+	}
+	
+	public void methodA() throws IOException{
+		System.out.println("methodA() 실행");
+		methodB();
+	}
+	
+	public void methodB() throws IOException{
+		System.out.println("methodB() 실행");
+		methodC();
+		// methodC()는 IOException을 던질수도 있기 때문에
+		// 호출시 예외 처리 구문을 작생해야한다.
+	}
+	
+	public void methodC() throws IOException{
+		System.out.println("methodC() 실행");
+		throw new IOException();
+		// 컴파일에러
+	}
+	
+	
+	
+	public void ex5() throws ScoreInputException{
+		// 사용자 정의 예외
+		// - Java에서 제공하지 않는 예외 상황이 있을 경우
+		//	이를 처리하기 위한 예외 클래스를 사용자가 직접 작성
+		
+		Scanner sc = new Scanner(System.in);
+		
+			System.out.print("점수 입력(0~100) : ");
+			int score = sc.nextInt();
+			
+			if(score <0 || score>100) {
+				// 사용자 정의 예외 강제 발생
+//				throw new ScoreInputException(); // 기본생성자
+				throw new ScoreInputException("ex5() 호출 중 0~100사이 범위를 초과"); 
+				// 오류발생시 오류 메시지 변경
+				//- 어느 위치에서 예외 발생하는지 표시하는 용도로 쓴다.
+				
+			}
+			
+			System.out.println("입력한 점수는 : " + score);
 		
 		
 	}
 	
+	public void startEx5() {
+		try {
+			ex5(); // ScoreInputException이 던져질 가능성이 있음
+		}catch(ScoreInputException e){
+			
+//			e.printStackTrace(); 자세하게 추적하지만 너무 길어질 가능성 있어서 가독성 떨어짐
+			
+			System.out.println("예외 내용 : "+e.getMessage());
+			
+			System.out.println("예외처리 진행");
+			
+		}finally {
+			System.out.println("프로그램 종료");
+		}
+	}
+	
+	// startEx5 실행 ex5호출 ex5실행
+	// 0~100밖의 수 입력시 사용자정의예외 강제발생
+	// 사용자정의예외 강제발생시 호출한 메서드로 던져짐
+	// startEx5에서 try~catch로 사용자정의예외 잡아서 처리
+	// 사용자정의예외 실행하고 printStackTrace 사용자정의예외의 추적경로표시 
+	// finally 실행
+	
+	// 예외처리방식이 좀더 강력한 if문과 비슷하다. 좀더 강하다
 	
 	
 	
