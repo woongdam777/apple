@@ -1,7 +1,10 @@
 package edu.kh.api.view;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
 
 import edu.kh.api.dto.Student;
 import edu.kh.api.service.APIService;
@@ -21,7 +24,13 @@ public class APIView {
 			System.out.println("1. equals() + hashCode");
 			System.out.println("2. String 클래스 제공 메서드(join)"); // equals, hashCode, format,join/split
 			System.out.println("3. String 클래스 제공 메서드(split)"); 
-			System.out.println("4. String 클래스의 특징, 문제점"); 
+			System.out.println("4. String 클래스의 특징, 문제점");
+			System.out.println("5. StringBuffer/Builder");
+			System.out.println("6. 문자열을 계속 입력 받아 한 번에 출력하기");
+			System.out.println("7. Wrapper Class");
+			System.out.println("8. Data Class");
+			
+			
 			System.out.println("0. 프로그램 종료");
 			
 			System.out.print("메뉴 선택 : ");
@@ -35,6 +44,12 @@ public class APIView {
 				case 2 : ex2();  break;
 				case 3 : ex3();  break;
 				case 4 : ex4();  break;
+				case 5 : ex5();  break;
+				case 6 : ex6();  break;
+				case 7 : ex7();  break;
+				case 8 : ex8();  break;
+				
+				
 				case 0 : break;
 				default : System.out.println("메뉴에 존재하는 번호만 입력해주세요.");
 				}
@@ -46,7 +61,7 @@ public class APIView {
 			
 				sc.nextLine(); // 입력버퍼에 남아있는 잘못 입력된 문자열을 읽어와 없앰
 				
-				input = -1; // input값에 0이 아닌 값을 대입하여 while이 종료되지 않게함
+				input = -1; // input값에 0이 아닌 값을 대입하여 while이 종료되지 않게 함
 			}
 			
 			
@@ -143,8 +158,186 @@ public class APIView {
 		// String 값을 변경할 경우 기존 객체가 변경되는 것이 아닌 새 객체를 생성해서 참조하게된다.
 		
 		
+	}
+	
+	
+	private void ex5() {
+		System.out.println("\n--- StringBuffer/Builder ---\n");
+		
+		// StromgBiffer. StromgBuilder 두 클래스는 제공하는 메서드가 동일하다
+		//StringBuffer sb = new StringBuffer();
+		StringBuilder sb = new StringBuilder();
+		
+		// StringBuffer.capacity() : 현재 버퍼의 크기
+		System.out.println(sb.capacity());
+		System.out.println("현재 주소 : " + System.identityHashCode(sb));
+		
+		// StringBuffer.append(문자열)
+		// -> StringBuffer 객체에 문자열을 기존 데이터 제일 뒤에 붙임
+		sb.append("abc");
+		
+		// StringBuffer.toStirng()
+		// -> StringBuffer에 저장된 문자열을 String 형태로 반환
+		
+		System.out.println("sb에 저장된 문자열 : " + sb.toString());
+		
+		System.out.println("abc 추가 후 주소 : " + System.identityHashCode(sb));
+		
+		sb.append("def");
+		System.out.println("sb에 저장된 문자열 : " + sb.toString());
+		System.out.println("def 추가 후 주소 : " + System.identityHashCode(sb));
+	
+		// 새로운 문자열이 추가되어도 객체의 주소는 변하지 않음 == 가변성(mutalbe)
+		// -> 문자열 수정시 새로운 객체를 생성하지 않아 메모리 소비를 절약할 수 있다.
+		
+		// insert(인덱스, 문자) : 중간 삽입
+		
+		sb.insert(2, "@");
+		System.out.println(sb.toString());
+		
+		// delete(int start, int end) : 삭제(start이상 end미만)
+		sb.delete(3, 5); // ab@cdef
+		System.out.println(sb.toString()); // ab@ef
+		
+		System.out.println(sb.length());
+		
+		// replace(int start, int end, String str) : start이상 end미만을 str로 변경
+		sb.replace(0, 2, "AB");
+		System.out.println(sb.toString()); // AB@ef
+		
+	}
+	
+	private void ex6() {
+		System.out.println("\n--- 문자열을 계속 입력 받아 한 번에 출력하기 ---\n");
+		
+		StringBuffer sb = new StringBuffer();
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("문자열 입력 (종료를 원할 경우 !wq 입력)");
+		
+		String str = null;
+		
+		while(true) {
+			// sc.nextLine() : 한 줄을 입력 받아 String 반환
+			// sb.append(String str) : 기존 문자열 뒤에 추가
+			str = sc.nextLine();
+			
+			// 입력 종료를 원하는 경우
+			if(str.equals("!wq")){
+				break;
+			}
+			
+			sb.append(str);
+			sb.append("\n"); // \n 개행 문자 (new line)
+		}
 		
 		
+		// delete()를 이용해 마지막 문자열 제거
+		//sb.delete(sb.length()-1, sb.length());
+		
+		System.out.println("----- 입력 받은 내용 -----");
+		
+		System.out.println(sb.toString());
+	}
+	
+	private void ex7() {
+		System.out.println("\n--- Wrapper Class ---\n");
+		
+		/* Wrapper Class
+		 * - 기본 자료형을 객체로 다룰 수 잇도록 포장하는 클래스
+		 * 왜 포장이 필요한가?
+		 * 1) 기본 자료형이 제공하지 추가 필드, 매서드를 제공하기 위해
+		 * 2) 기본 자료형을 객체로 다뤄야 하는 경우가 있기 때문에
+		 *   (컬렉션)
+		 * */
+		
+		// Integer(+ 모든 Wrapper) 제공 상수 필드
+		System.out.println(Integer.BYTES); // byte 단위 크기
+		System.out.println(Integer.SIZE); // bit 단위 크기
+		System.out.println(Integer.MAX_VALUE); // 자료형 최대값
+		System.out.println(Integer.MIN_VALUE); // 자료형 최소값
+		System.out.println(Integer.TYPE); // Wrapper 클래스 대상 타입
+		
+		// String을 기본자료형으로 변환
+		int i = Integer.parseInt("100")+50;
+		System.out.println("i : " + i);
+		
+		long l = Long.parseLong("12345678900") + 10000000000L;
+		System.out.println("l : " + l);
+		
+		double d = Double.parseDouble("3.1415926535")+10.0;
+		System.out.println("d : "+ d);
+		
+		
+		// 기본 자료형 -> String 변환
+		String str1 = Integer.valueOf(999).toString();
+		String str2 = 999 + "";
+		// "" : 빈 문자열 (내용이 없는 길이 0짜리 String)
+		
+		
+		// Wrapper Class를 이용하여 객체 생성
+		Integer iNum1 = new Integer(10);
+		// 최신버전에서는 이렇게 하는것을 권장안함 자동박싱/언박싱 기술을 쓰는 것을 권장
+		
+		int iNum2 = iNum1;
+		// (int)  = [ (Integer) -> (int)  ] [AutoUnboxing]
+		System.out.println("iNum2 : " + iNum2);
+		
+		Integer iNum3 = 50;
+		// (Integer) = [(int) -> (Integer)] [AutoBoxing]
+		
+		
+		/* Boxing / Unboxing
+		 * Boxing : 기본 자료형 -> Wrapper Class 객체
+		 * Unboxing : Wrapper Class 객체 -> 기본 자료형
+		 * 
+		 * AutoBoxing / AutoUnboxing
+		 * - 사용자가 신경쓰지 않아도 상황에 따라 기본 자료형 <-> Wrapper Class 객체
+		 * 	 자동으로 변하는 기술
+		 * */
+	}
+	
+	
+	private void ex8() {
+		System.out.println("\n--- Data Class ---\n");
+		
+//	 java.util.Date
+		Date d1 = new Date(); //기본 생성자
+								// 객체 생성 시점의 시간 저장
+		System.out.println(d1.toString());
+		
+		Date d2 = new Date(0L); // Date(long date)
+								// Date기준 시간으로부터
+								// ms 단위로 지난 시간을 계산해서 저장
+		
+		System.out.println(d2.toString());
+		// Thu Jan 01 09:00:00 KST 1970
+		
+		Date d3 = new Date(1000L);
+		System.out.println(d3.toString());
+		
+		// System.currentTimeMillis()
+		// -> 기준 시간으로부터 지난 시간을 나타낸다.
+		System.out.println("현재시간 - 기준시간 (ms) : " + System.currentTimeMillis());
+		
+		// 현재 시간으로 부터 1시간 후를 저장
+		long temp = 60*60*1000; // 3600000 ms == 1시간
+		//          분   초  ms
+		Date d4 = new Date(System.currentTimeMillis() + temp);
+		System.out.println(d4.toString());
+		
+		// SimpleDateFormat : 간단한 날짜 형식
+		// java.text 패키지에서 제공
+		
+		SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
+		
+		SimpleDateFormat sdf2 = new SimpleDateFormat("G yyyy년 MM월 dd일 HH시 mm분 ss초");
+		
+		SimpleDateFormat sdf3 = new SimpleDateFormat("yyyy년 MM월 dd일 E요일 a HH시 mm분 ss초");
+
+		System.out.println(sdf1.format(d4));
+		System.out.println(sdf2.format(d4));
+		System.out.println(sdf3.format(d4));
 		
 	}
 	
