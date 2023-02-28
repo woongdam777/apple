@@ -2,7 +2,10 @@ package edu.kh.collection.list.dto;
 
 import java.util.Objects;
 
-public class Student {
+// Comparable<T> 인터페이스
+// - 객체의 기본 정령 기준을 제공하는 인터페이스
+
+public class Student implements Comparable<Student>{
 
 	private String name;
 	private int grade;
@@ -105,7 +108,26 @@ public class Student {
 				&& grade == other.grade && Objects.equals(name, other.name) && number == other.number
 				&& score == other.score;
 	}
-	
+
+	@Override
+	public int compareTo(Student other) {
+
+		// Student 객체로 이루어진 컬렉션을 정렬하라고 할때
+		// 별도의 다른 기준이 없다면 score 순서로 정렬
+		
+		// compareTo() 메서드에서 반환 되는 값이
+		// 0 이하 : 순서를 그대로 유지
+		//		-> 정확히는 현재 객체가 작으면 현재 객체를 왼쪽으로 이동
+		// 0 초과(양수) : 큰 값이 오른쪽으로 이동
+		//				-> 정확히는 현재 객체가 크면 현재 객체를 오른쪽으로 이동
+		// return this.score - other.score;
+		
+		
+		
+		return other.score - this.score;
+		
+	}
+
 	
 	
 }
