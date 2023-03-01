@@ -2,6 +2,7 @@ package edu.kh.collection.list.service;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
 import edu.kh.collection.list.dto.Student;
@@ -9,7 +10,11 @@ import edu.kh.collection.list.dto.Student;
 public class StudentService {
 
 	
-	private List<Student> studentList = new ArrayList<Student>();
+//	private List<Student> studentList = new ArrayList<Student>();
+	private List<Student> studentList = new LinkedList<Student>();
+											// List구현 클래스마다 장/단점이 있어 골라서 사용
+	
+	
 	
 	public StudentService() {
 		
