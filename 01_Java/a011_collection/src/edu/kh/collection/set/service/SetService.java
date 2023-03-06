@@ -49,11 +49,11 @@ public class SetService {
 		System.out.println(set);
 		
 		// boolean remove(Object o)
-		// - Set에 저장된 객체 중 같은 객체를 찾아 제
+		// - Set에 저장된 객체 중 같은 객체를 찾아 제거
 		//	같은 객체가 있어서 제거되면 true/ 아니면 false
 		
-		// - 같은 객체의 기준 == equals() -> true, hashCod() 같음
-		 // equals가 오버라이징 되어 있어야 쓸수있다.
+		// - 같은 객체의 기준 == equals() -> true, hashCode() 같음
+		 // equals가 오버라이징 되어 있어야 쓸 수 있다.
 		
 		if(set.remove("직방"))System.out.println("직방이 제거되었습니다.");
 		else				System.out.println("직방이 존재하지 않습니다.");
