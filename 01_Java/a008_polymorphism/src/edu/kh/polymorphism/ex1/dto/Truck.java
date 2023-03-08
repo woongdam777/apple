@@ -5,7 +5,7 @@ public class Truck extends Car {
 	private double weight; // 적재량
 	
 	public Truck() {
-		super(); // 미작성 시 컴파이러락 자동 추가
+		super(); // 미작성 시 컴파일러가 자동 추가
 	}
 	
 	// 매개변수 생성자

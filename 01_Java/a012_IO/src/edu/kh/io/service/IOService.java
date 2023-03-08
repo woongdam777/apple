@@ -116,7 +116,7 @@ public class IOService {
 	
 	
 	public void byteInput() {
-		//바이트 기반 이벼력 스트림
+		//바이트 기반 입력 스트림
 		
 		FileInputStream fis = null;
 		
@@ -134,7 +134,7 @@ public class IOService {
 				
 				value = fis.read();
 						// 다음 1byte를 읽어와 int형으로 반환 - 왜 int? 그냥 short byte 잘 안씀
-						// 또는 더 이상 릭어올 데이터가 없으면 -1 반환
+						// 또는 더 이상 올 데이터가 없으면 -1 반환
 						// the next byte of data, or -1if the end of the file is reached.
 				if(value == -1) break; // 파일을 다 읽어온 경우 반복을 멈춤
 			
