@@ -56,7 +56,7 @@ FROM EMPLOYEE;
 -- <중요!!> [오늘 날짜 조회]
 
 SELECT SYSDATE FROM DUAL; 
--- SYSDATE : 시스템상의 ㅎ녀재 날짜(시간)
+-- SYSDATE : 시스템상의 현재 날짜(시간)
 -- DUAL(DUmmy tAbLe) : 가짜 테이블(실제 테이블이 아닌 임시 테이블 용도)
 SELECT 100*20+30 FROM DUAL;
 
