@@ -21,7 +21,7 @@ SELECT DEPT_CODE, SUM(SALARY) FROM EMPLOYEE;
  * 
  * */
 
--- GROUP BY 절 :  같은 ㄱ밧들이 여러 개 기록된 행을 하나의 그룹으로 묶음
+-- GROUP BY 절 :  같은 값들이 여러 개 기록된 행을 하나의 그룹으로 묶음
 
 -- 부서별 급여 평균
 SELECT AVG(SALARY) FROM EMPLOYEE GROUP BY DEPT_CODE ORDER BY DEPT_CODE ;
@@ -144,7 +144,7 @@ ORDER BY DEPT_CODE DESC;
 
 -- EMPLOYEE 테이블에서 각 부서에 소속된 직급 별 급여 합
 -- 부서 별 급여 합
--- 전체 직웝의 급여 합을 조회
+-- 전체 직원의 급여 합을 조회
 SELECT DEPT_CODE , JOB_CODE , SUM(SALARY)
 FROM EMPLOYEE 
 GROUP BY ROLLUP(DEPT_CODE ,JOB_CODE) 
