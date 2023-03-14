@@ -254,7 +254,7 @@ SELECT SYSDATE, TO_CHAR(SYSDATE, 'YY-MM-DD DAY HH:MI:SS') FROM DUAL;
 SELECT  TO_CHAR(SYSDATE, 'YYYY"년" MM"월" DD"일" DAY') TODAY FROM DUAL;
 -- ORA-01821: 날짜 형식이 부적합니다
 
---EMPLOYEE테이블에서 모든 사원의 입사일을 '2023년 03월 07일(화)'형힉으로 조회
+--EMPLOYEE테이블에서 모든 사원의 입사일을 '2023년 03월 07일(화)'형식으로 조회
 SELECT EMP_NAME,
 		TO_CHAR(HIRE_DATE, 'RRRR"년" MM"월" DD"일" (DY)')
 FROM EMPLOYEE;
