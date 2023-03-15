@@ -1,6 +1,6 @@
 /*	SELECT (조회, DQL 또는 DML)
  * 
- * - 데이터를 조회하면 조건에 맞느 ㄴ행들이 조회됨
+ * - 데이터를 조회하면 조건에 맞는 행들이 조회됨
  *   -> 조회된 행들의 집합을  "RESULT SET"이라고 한다.
  * 
  * - RESULT SET은 0개 이상의 행이 포함도리 수 잇다.
@@ -62,7 +62,7 @@ SELECT 100*20+30 FROM DUAL;
 
 -- 어제, 오늘, 내일 조회
 --> DATE 타입에 +,- 연산 가능(일 단위)
-SELECT SYSDATE-1M, SYSDATE, SYSDATE+1
+SELECT SYSDATE-1, SYSDATE, SYSDATE+1
 FROM DUAL;
 
 -- 한 시간 후 조회
