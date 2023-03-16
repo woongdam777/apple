@@ -53,7 +53,7 @@ GROUP BY DECODE(SUBSTR(EMP_NO,8,1),'1','남','2','여')
 ORDER BY COUNT(*) DESC;
 
 -- WHERE + GROUP BY 
---> WHERE 접일 GROUP BY절보다 우선 순위가 빠르다
+--> WHERE 절이 GROUP BY절보다 우선 순위가 빠르다
 
 -- EMPLOYEE 테이블에서 부서코드가 'D5','D6'인 부서의 평균 급여 조회
 
