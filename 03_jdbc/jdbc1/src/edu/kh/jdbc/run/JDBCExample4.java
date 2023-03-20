@@ -98,4 +98,3 @@ java.sql.SQLException: 실행할 SQL 문은 비어 있거나 널일 수 없음
 java.sql.SQLException: 부적합한 열 이름
 - rs.get자료형("컬럼명") 구문에서 "컬럼명"을 잘못 작성한 경우
 */
- */
