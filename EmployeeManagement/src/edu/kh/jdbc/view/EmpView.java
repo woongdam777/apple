@@ -1,8 +1,14 @@
 package edu.kh.jdbc.view;
 
+import java.sql.Date;
+import java.sql.SQLException;
 import java.util.InputMismatchException;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
+import edu.kh.jdbc.model.dto.Emp;
 import edu.kh.jdbc.model.service.EmpService;
 
 public class EmpView {
@@ -97,15 +103,15 @@ public class EmpView {
 				
 				
 				switch(input) {
-				case 1:  break;
-				case 2:  break;
-				case 3:  break;
-				case 4:  break;
-				case 5:  break;
-				case 6:  break;
-				case 7:  break;
-				case 8:  break;
-				case 9:  break;
+				case 1: selectAll(); break;
+				case 2: selectRetire(); break;
+				case 3: selectEmp(); break;
+				case 4: empInsert(); break;
+				case 5: updateEmp(); break;
+				case 6: deleteEmp(); break;
+				case 7: retireEmp(); break;
+				case 8: fiveEmp(); break;
+				case 9: deptEmp(); break;
 				case 0: System.out.println("\n[프로그램을 종료합니다...]\n"); break;
 				
 				default: System.out.println("\n[메뉴에 존재하는 번호를 입력하세요.]\n");
@@ -121,4 +127,244 @@ public class EmpView {
 		}while(input != 0);
 		
 	}
+
+	/**
+	 * 1. 재직중인 사원 전체 조회
+	 */
+	private void selectAll() {
+		System.out.println("\n----재직중인 사원 전체 조회----\n");
+		try {
+			List<Emp> empList = service.selectAll();
+			for(Emp e : empList) {
+				System.out.printf("%d, %s, %s, %s, %d, %s, %s\n",
+						e.getEmpId(),e.getEmpName(),e.getDepartmentTitle(),e.getJobName(),e.getSalary(),e.getPhone(),e.getEmail());
+			}
+		} catch (SQLException e) {
+			System.out.println("[잘못 입력하셨습니다.]");
+			e.printStackTrace();
+		}
+	}
+	/**
+	 * 2. 퇴직한 사원 전체 조회
+	 */
+	private void selectRetire() {
+		System.out.println("\n----퇴직한 사원 전체 조회----\n");
+		
+		try {
+			List<Emp> empList = service.selectRetire();
+			for(Emp e : empList) {
+				System.out.printf("%d, %s, %s, %s, %s\n",
+						e.getEmpId(),e.getEmpName(),e.getPhone(),e.getEmail(),e.getEntDate());
+			}
+		}catch(SQLException e) {
+			System.out.println("[잘못 입력하셨습니다.]");
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * 3. 사번이 일치하는 사원 조회
+	 */
+	private void selectEmp() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("\n----사번이 일치하는 사원 조회----\n");
+		System.out.print("사번 입력 : ");
+		int input = sc.nextInt();
+		sc.nextLine();
+		try {
+			List<Emp> empList = service.selectEmp(input);
+			if(empList.isEmpty()) {
+				System.out.println("[사번이 일치하는 사원이 없습니다]");
+			}
+			for(Emp e : empList) {
+				System.out.printf("%d, %s, %s, %s, %d, %s, %s, %s\n",
+						e.getEmpId(),e.getEmpName(),e.getDepartmentTitle(),e.getJobName(),e.getSalary(),e.getPhone(),e.getEmail(),e.getHireDate());
+			}
+		} catch (SQLException e) {
+			System.out.println("[잘못 입력하셨습니다.]");
+			e.printStackTrace();
+		}
+	}
+
+	
+	/**
+	 * 4.사원 정보 추가
+	 */
+	private void empInsert() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("\n----사원 정보 추가----\n");
+		
+	      System.out.print("이름 : ");
+	      String empName = sc.next();
+	      
+	      System.out.print("주민등록번호 : ");
+	      String empNo = sc.next();
+	      
+	      System.out.print("이메일 : ");
+	      String email = sc.next();
+	      
+	      System.out.print("전화번호(-제외) : ");
+	      String phone = sc.next();
+	      
+	      System.out.print("부서코드(D1~D9) : ");
+	      String deptCode = sc.next();
+	      
+	      System.out.print("직급코드(J1~J7) : ");
+	      String jobCode = sc.next();
+	      
+	      System.out.print("급여등급(S1~S6) : ");
+	      String salLevel = sc.next();
+	      
+	      System.out.print("급여 : ");
+	      int salary = sc.nextInt();
+	      
+	      System.out.print("보너스 : ");
+	      double bonus = sc.nextDouble();
+	      
+	      System.out.print("사수번호 : ");
+	      int managerId = sc.nextInt();
+	      sc.nextLine(); 
+		
+	      Emp emp = new Emp(empName, empNo, email, phone, salary, deptCode, jobCode, salLevel, bonus, managerId);
+	      
+	      try {
+			int result = service.empInsert(emp);
+			String sys = "";
+		      if(result>0) sys = "[사원 정보가 추가 되었습니다.]";
+		      else sys = "[실패하였습니다.]";
+		      System.out.println(sys);
+		} catch (SQLException e) {
+			System.out.println("[잘못 입력하셨습니다.]");
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * 5.사번으로 사원 정보 수정
+	 */
+	private void updateEmp() {
+		System.out.println("\n----사번으로 사원 정보 수정----\n");
+		Scanner sc = new Scanner(System.in);
+		System.out.print("수정할 사번 입력 : ");
+		int input = sc.nextInt();
+		sc.nextLine();
+		
+		System.out.print("이메일 : ");
+	    String email = sc.next();
+	      
+	    System.out.print("전화번호(-제외) : ");
+	    String phone = sc.next();
+	    
+	    System.out.print("급여 : ");
+	    int salary = sc.nextInt();
+	      
+	    System.out.print("보너스 : ");
+	    double bonus = sc.nextDouble();
+		
+	    Emp emp = new Emp();
+	    emp.setEmail(email);
+	    emp.setPhone(phone);
+	    emp.setSalary(salary);
+	    emp.setBonus(bonus);
+
+	    try {
+			int result = service.updateEmp(input, emp);
+			String sys = "";
+			if(result>0) sys = "[수정 되었습니다.]";
+		    else sys = "[사번이 일치하는 사원이 없습니다.]";
+		    System.out.println(sys);
+		}catch(SQLException e) {
+			System.out.println("[잘못 입력하셨습니다.]");
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * 6.사번으로 사원 정보 삭제
+	 */
+	private void deleteEmp() {
+		System.out.println("\n----사번으로 사원 정보 삭제----\n");
+		Scanner sc = new Scanner(System.in);
+		System.out.print("사번 입력 : ");
+		int input = sc.nextInt();
+		sc.nextLine();
+		System.out.print("정말 삭제하시겠습니까(Y/N)");
+		char yn = sc.next().toUpperCase().charAt(0);
+		
+		if(yn == 'N') {
+			System.out.println("취소");
+			return;
+		}
+		try {
+			int result = service.deleteEmp(input);
+			String sys = "";
+			if(result>0) sys = "[삭제 되었습니다.]";
+		    else sys = "[사번이 일치하는 사원이 없습니다.]";
+		    System.out.println(sys);
+		}catch(SQLException e) {
+			System.out.println("[잘못 입력하셨습니다.]");
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * 7. 사번이 일치하는 사원 퇴직 처리
+	 */
+	private void retireEmp() {
+		System.out.println("\n----사번으로 사원 퇴직 처리----\n");
+		Scanner sc = new Scanner(System.in);
+		System.out.print("퇴직처리할 사번 입력 : ");
+		int input = sc.nextInt();
+		sc.nextLine();
+		System.out.print("정말 퇴직처리하시겠습니까(Y/N)");
+		char yn = sc.next().toUpperCase().charAt(0);
+		
+		if(yn == 'N') {
+			System.out.println("취소");
+			return;
+		}
+		try {
+			int result = service.retireEmp(input);
+			String sys = "";
+			if(result>0) sys = "[처리 되었습니다.]";
+		    else sys = "[사번이 일치하는 않거나, 이미 퇴직된 사원입니다.]";
+		    System.out.println(sys);
+		}catch(SQLException e) {
+			System.out.println("[잘못 입력하셨습니다.]");
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * 8. 가장 최근 입사한 사원 5명 조회
+	 */
+	private void fiveEmp() {
+		System.out.println("\n----가장 최근 입사한 사원 5명 조회----\n");
+		try {
+			List<Emp> empList = service.fiveEmp();
+			for(Emp e : empList) {
+				System.out.printf("%d, %s, %s, %s\n",e.getEmpId(),e.getEmpName(),e.getDepartmentTitle(),e.getHireDate().toString());
+			}
+		}catch(SQLException e) {
+			System.out.println("[잘못 입력하셨습니다.]");
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * 9. 부서별 통계 조회
+	 */
+	private void deptEmp() {
+		System.out.println("\n----부서별 통계 조회----\n");
+		try {
+			List<Object> empList = service.deptEmp();
+			for(Object empMap : empList) {
+				Map<Integer,Object> k = (Map<Integer, Object>) empMap;
+				System.out.printf("%s,%s,%s\n",k.get(1),k.get(2), k.get(3));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 }

@@ -15,10 +15,10 @@
 	<!-- <entry key="url">jdbc:oracle:thin:@115.90.212.22:9000:XE</entry> -->
 	
 	<!-- kh 계정 -->
-	<entry key="user">계정명</entry>
+	<entry key="user">kh_kjw</entry>
 	
 	<!-- kh 계정 비밀번호 -->
-	<entry key="pw">비밀번호</entry>
+	<entry key="pw">oracle_kjw123A</entry>
 	
 </properties>
 
