@@ -49,15 +49,15 @@ public class EmpService {
 	 * @param input
 	 * @return
 	 */
-	public List<Emp> selectEmp(int input) throws SQLException{
+	public Emp selectEmp(int input) throws SQLException{
 	
 		Connection conn = getConnection();
 		
-		List<Emp> empList = dao.selectEmp(conn, input);
+		Emp emp = dao.selectEmp(conn, input);
 		
 		close(conn);
 		
-		return empList;
+		return emp;
 	}
 
 
@@ -92,7 +92,7 @@ public class EmpService {
 		int result = dao.updateEmp(conn,input, emp);
 		if(result>0) commit(conn);
 		else rollback(conn);
-		
+		close(conn);
 		return result;
 	}
 
@@ -108,24 +108,40 @@ public class EmpService {
 		int result = dao.deleteEmp(conn, input);
 		if(result >0 ) commit(conn);
 		else rollback(conn);
-		
+		close(conn);
 		return result;
 	}
 
+	/** 존재하는 사원인지, 퇴직한 사원인지 결과를 반환하는 서비스
+	 * @param input
+	 * @return check (0: 없는 사원, 1:퇴직한 사원, 2:재직중인 사원
+	 * @throws SQLException
+	 */
+	public int checkretireEmp(int input) throws SQLException{
 
+		Connection conn = getConnection();
+		int check = dao.checkretireEmp(conn, input);
+		close(conn);
+		return check;
+	}
+	
 	/** 사번이 일치하는 사원 퇴직 처리 서비스
 	 * @param input
 	 * @return
 	 * @throws SQLException
 	 */
-	public int retireEmp(int input) throws SQLException{
+	public void/*int*/ retireEmp(int input) throws SQLException{
 		
 		Connection conn = getConnection();
-		int result = dao.retireEmp(conn, input);
-		if(result >0 ) commit(conn);
-		else rollback(conn);
-		
-		return result;
+//		int result = dao.retireEmp(conn, input);
+//		if(result >0 ) commit(conn);
+//		else rollback(conn);
+		dao.retireEmp(conn, input);
+		// 트랜잭션 처리
+		// DB예외 발생시 SQL 수행이 정상적으로 진행되지 않음
+		commit(conn);
+		close(conn);
+//		return result;
 	}
 
 
@@ -155,6 +171,9 @@ public class EmpService {
 		close(conn);
 		return empList;
 	}
+
+
+	
 	
 }
 

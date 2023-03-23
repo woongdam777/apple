@@ -2,11 +2,13 @@ package edu.kh.jdbc.view;
 
 import java.sql.Date;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 
 import edu.kh.jdbc.model.dto.Emp;
 import edu.kh.jdbc.model.service.EmpService;
@@ -157,7 +159,7 @@ public class EmpView {
 						e.getEmpId(),e.getEmpName(),e.getPhone(),e.getEmail(),e.getEntDate());
 			}
 		}catch(SQLException e) {
-			System.out.println("[잘못 입력하셨습니다.]");
+			System.out.println("[예외발생]");
 			e.printStackTrace();
 		}
 	}
@@ -172,16 +174,14 @@ public class EmpView {
 		int input = sc.nextInt();
 		sc.nextLine();
 		try {
-			List<Emp> empList = service.selectEmp(input);
-			if(empList.isEmpty()) {
+			Emp emp = service.selectEmp(input);
+			if(emp == null) {
 				System.out.println("[사번이 일치하는 사원이 없습니다]");
 			}
-			for(Emp e : empList) {
 				System.out.printf("%d, %s, %s, %s, %d, %s, %s, %s\n",
-						e.getEmpId(),e.getEmpName(),e.getDepartmentTitle(),e.getJobName(),e.getSalary(),e.getPhone(),e.getEmail(),e.getHireDate());
-			}
+						emp.getEmpId(),emp.getEmpName(),emp.getDepartmentTitle(),emp.getJobName(),emp.getSalary(),emp.getPhone(),emp.getEmail(),emp.getHireDate());
 		} catch (SQLException e) {
-			System.out.println("[잘못 입력하셨습니다.]");
+			System.out.println("[예외발생]");
 			e.printStackTrace();
 		}
 	}
@@ -234,7 +234,7 @@ public class EmpView {
 		      else sys = "[실패하였습니다.]";
 		      System.out.println(sys);
 		} catch (SQLException e) {
-			System.out.println("[잘못 입력하셨습니다.]");
+			System.out.println("[예외발생]");
 			e.printStackTrace();
 		}
 	}
@@ -248,33 +248,40 @@ public class EmpView {
 		System.out.print("수정할 사번 입력 : ");
 		int input = sc.nextInt();
 		sc.nextLine();
-		
-		System.out.print("이메일 : ");
-	    String email = sc.next();
-	      
-	    System.out.print("전화번호(-제외) : ");
-	    String phone = sc.next();
-	    
-	    System.out.print("급여 : ");
-	    int salary = sc.nextInt();
-	      
-	    System.out.print("보너스 : ");
-	    double bonus = sc.nextDouble();
-		
-	    Emp emp = new Emp();
-	    emp.setEmail(email);
-	    emp.setPhone(phone);
-	    emp.setSalary(salary);
-	    emp.setBonus(bonus);
+		try {
+			
+			Emp emp = service.selectEmp(input);
+			if( emp == null) {
+				System.out.println("[사번이 일치하는 사원이 없습니다.]");
+				return;
+			}
+			
+			System.out.print("이메일 : ");
+		    String email = sc.next();
+		      
+		    System.out.print("전화번호(-제외) : ");
+		    String phone = sc.next();
+		    
+		    System.out.print("급여 : ");
+		    int salary = sc.nextInt();
+		      
+		    System.out.print("보너스 : ");
+		    double bonus = sc.nextDouble();
+			
+		    emp = new Emp();
+		    emp.setEmail(email);
+		    emp.setPhone(phone);
+		    emp.setSalary(salary);
+		    emp.setBonus(bonus);
 
-	    try {
+	    
 			int result = service.updateEmp(input, emp);
 			String sys = "";
 			if(result>0) sys = "[수정 되었습니다.]";
 		    else sys = "[사번이 일치하는 사원이 없습니다.]";
 		    System.out.println(sys);
 		}catch(SQLException e) {
-			System.out.println("[잘못 입력하셨습니다.]");
+			System.out.println("[예외발생]");
 			e.printStackTrace();
 		}
 	}
@@ -302,7 +309,7 @@ public class EmpView {
 		    else sys = "[사번이 일치하는 사원이 없습니다.]";
 		    System.out.println(sys);
 		}catch(SQLException e) {
-			System.out.println("[잘못 입력하셨습니다.]");
+			System.out.println("[예외발생]");
 			e.printStackTrace();
 		}
 	}
@@ -316,23 +323,67 @@ public class EmpView {
 		System.out.print("퇴직처리할 사번 입력 : ");
 		int input = sc.nextInt();
 		sc.nextLine();
-		System.out.print("정말 퇴직처리하시겠습니까(Y/N)");
-		char yn = sc.next().toUpperCase().charAt(0);
+//		System.out.print("정말 퇴직처리하시겠습니까(Y/N)");
+//		char yn = sc.next().toUpperCase().charAt(0);
+//		
+//		if(yn == 'N') {
+//			System.out.println("취소");
+//			return;
+//		}
+//		try {
+//			int result = service.retireEmp(input);
+//			String sys = "";
+//			if(result>0) sys = "[처리 되었습니다.]";
+//		    else sys = "[사번이 일치하는 않거나, 이미 퇴직된 사원입니다.]";
+//		    System.out.println(sys);
+//		}catch(SQLException e) {
+//			System.out.println("[예외발생]");
+//			e.printStackTrace();
+//		}
 		
-		if(yn == 'N') {
-			System.out.println("취소");
-			return;
-		}
 		try {
-			int result = service.retireEmp(input);
-			String sys = "";
-			if(result>0) sys = "[처리 되었습니다.]";
-		    else sys = "[사번이 일치하는 않거나, 이미 퇴직된 사원입니다.]";
-		    System.out.println(sys);
-		}catch(SQLException e) {
-			System.out.println("[잘못 입력하셨습니다.]");
+			// 1. 사번이 일치하는 사원이 있는지 + 있어도 퇴직한 사원인지 확인하는 서비스 호출
+			int check = service.checkretireEmp(input);
+			
+			if(check == 0) {
+				System.out.println("[사번이 일치하는 사원이 존재하지 않습니다.]");
+				return;
+			}
+			if(check == 1) {
+				System.out.println("[이미 퇴직 처리된 사원입니다.]");
+				return;
+			}
+			
+			// 2. 사원이 존재하고 퇴직하지 않았으면 정말 퇴직 처리 할 것인지 확인 후 서비스 호출
+			System.out.print("정말 퇴직처리하시겠습니까(Y/N)");
+			char yn = sc.next().toUpperCase().charAt(0);
+			
+			if(yn == 'N') {
+				System.out.println("취소");
+				return;
+			}
+			if(yn != 'Y') {
+				System.out.println("[잘못입력]");
+				return;
+			}
+//			int result = service.retireEmp(input);
+//			
+//			if(result>0) System.out.println("[퇴직처리완료]");
+			
+			// 앞서서 사번에 대한 검증이 끝난 상황
+			// 사번이 없어서 수정이 실패하는 경우는 생각할 필요 없음
+			// 퇴직 서비스는 성공 또는 예외만 존재
+			// 반환 값이 따로 필요 없음
+			service.retireEmp(input);
+			System.out.println("[퇴직처리완료]");
+			
+		}catch(Exception e) {
+			System.out.println("[예외발생]");
 			e.printStackTrace();
 		}
+		
+		
+		
 	}
 	
 	/**
@@ -346,7 +397,7 @@ public class EmpView {
 				System.out.printf("%d, %s, %s, %s\n",e.getEmpId(),e.getEmpName(),e.getDepartmentTitle(),e.getHireDate().toString());
 			}
 		}catch(SQLException e) {
-			System.out.println("[잘못 입력하셨습니다.]");
+			System.out.println("[예외발생]");
 			e.printStackTrace();
 		}
 	}
@@ -356,13 +407,42 @@ public class EmpView {
 	 */
 	private void deptEmp() {
 		System.out.println("\n----부서별 통계 조회----\n");
+		
+		// DTO가 없을 때 Map을 사용하는 이유
+		// 1. 일회성 DTO를 작성하는 것은 코드 낭비
+		// 2. DTO와 Map의 구조가 유사하기 때문
+
+		// tip. DTO의 필드를 Map의 Key라고 생각해보기
+//		Emp emp = new Emp();
+//		emp.setEmpId(200);
+//		emp.setEmpName("고길동");
+//		
+//		emp.getEmpId();
+//		emp.getEmpName();
+//		
+//		Map<String, Object> map = new HashMap<>();
+//		map.put("empId", 200);
+//		map.put("empName", "고길동");
+//		
+//		map.get("empID");
+//		map.get("empName");
+		
+		
 		try {
 			List<Object> empList = service.deptEmp();
-			for(Object empMap : empList) {
-				Map<Integer,Object> k = (Map<Integer, Object>) empMap;
-				System.out.printf("%s,%s,%s\n",k.get(1),k.get(2), k.get(3));
+			for(Object map : empList) {
+				Map<Integer,Object> k = (Map<Integer, Object>) map;
+				System.out.printf("%s / %s / %s\n",k.get(1),k.get(2), k.get(3));
+//				Set<Integer> set = k.keySet();
+//				
+//				for(Integer key : set) {
+//					System.out.println(((List<Emp>) map).get(key) + " ");
+//				}
+//				System.out.println(); // 줄바꿈
 			}
+			
 		}catch(SQLException e) {
+			System.out.println("[예외발생]");
 			e.printStackTrace();
 		}
 	}
