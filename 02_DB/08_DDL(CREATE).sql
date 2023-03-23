@@ -52,7 +52,7 @@ SELECT * FROM User_tables;
     VARCHAR2(크기) : 가변길이 문자형 (4000 BYTE) / 속도는 느리다.
         -> ex) VARCHAR2(10) 컬럼에 'ABC' 3BYTE 문자열만 저장하면 나머지 7BYTE를 반환함.
         
-    DATE : 날짜 타입ㅇ
+    DATE : 날짜 타입
     BLOB : 대용량 이진 데이터 (4GB)
     CLOB : 대용량 문자 데이터 (4GB)
 */
