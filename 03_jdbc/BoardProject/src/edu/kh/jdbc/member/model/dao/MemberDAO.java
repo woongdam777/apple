@@ -65,6 +65,79 @@ public class MemberDAO {
 		
 		return memlist;
 	}
+
+	/** 내 정보 수정 SQL
+	 * @param conn
+	 * @param memberName
+	 * @param memberGender
+	 * @param memberNo
+	 * @return result
+	 * @throws SQLException
+	 */
+	public int updateMember(Connection conn, String memberName, String memberGender, int memberNo) throws SQLException{
+		// 1. 결과 저장용 변수 선언
+		int result = 0;
+		
+		try {
+			// 2. SQL 작성, 수행
+			String sql = prop.getProperty("updateMember");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memberName);
+			pstmt.setString(2, memberGender);
+			pstmt.setInt(3, memberNo);
+			
+			result = pstmt.executeUpdate();
+			
+		}finally {
+			// 3. JDBC 객체 자원 반환
+			close(pstmt);
+		}
+		
+		// 4. 결과 반환
+		return result;
+	}
+
+	/** 비밀번호 변경 SQL
+	 * @param conn
+	 * @param curPass
+	 * @param newPass
+	 * @param memberNo
+	 * @return
+	 * @throws Exception
+	 */
+	public int updatePassword(Connection conn, String curPass, String newPass, int memberNo) throws Exception{
+
+		int result = 0;
+		try {
+			String sql = prop.getProperty("updatePassword");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, newPass);
+			pstmt.setString(2, curPass);
+			pstmt.setInt(3, memberNo);
+			
+			result = pstmt.executeUpdate();
+			
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	public int unregisterMember(Connection conn, String memberPw, int memberNo) throws SQLException{
+		int result = 0;
+		try {
+			String sql = prop.getProperty("unregisterMember");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memberPw);
+			pstmt.setInt(2, memberNo);
+			
+			result = pstmt.executeUpdate();
+			
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
 	
 	
 	

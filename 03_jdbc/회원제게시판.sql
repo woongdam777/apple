@@ -174,11 +174,30 @@ AND MEMBER_ID = 'user01';
 
 
 -- 회원 목록 조회(아이디, 이름, 성별(남/여) + 회원번호(내림차순)
+SELECT MEMBER_ID, MEMBER_NM ,DECODE (MEMBER_GENDER,'M','남','여') MEMBER_GENDER
+FROM "MEMBER"
+WHERE HERE UNREGISTER_FLAG = 'N'
+ORDER BY MEMBER_NO DESC;
 
+-- 회원 정보(이름, 성별) 수정
+UPDATE "MEMBER" 
+SET MEMBER_NM =?,
+	MEMBER_GENDER =?
+WHERE MEMBER_NO =?
+;
 
+-- 비밀 번호 변경
+UPDATE "MEMBER" 
+SET MEMBER_PW = ? -- 새 비밀번호
+WHERE MEMBER_PW =? -- 현재 비밀번호
+AND MEMBER_NO = ? -- 회원 번호
+;
 
-
-
+UPDATE "MEMBER" 
+SET UNREGISTER_FLAG = 'Y'
+WHERE MEMBER_PW = ?
+AND MEMBER_NO =?
+;
 
 
 

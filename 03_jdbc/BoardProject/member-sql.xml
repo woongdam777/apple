@@ -11,6 +11,26 @@
 		WHERE UNREGISTER_FLAG = 'N'
 		ORDER BY MEMBER_NO DESC
 	</entry>
+	<!-- 회원정보 수정 - 이름, 성별 -->
+	<entry key="updateMember">
+		UPDATE "MEMBER" 
+		SET MEMBER_NM =?, MEMBER_GENDER =?
+		WHERE MEMBER_NO =?
+	</entry>
+	<!-- 비밀번호 변경 -->
+	<entry key="updatePassword">
+		UPDATE "MEMBER" 
+		SET MEMBER_PW = ?
+		WHERE MEMBER_PW =?
+		AND MEMBER_NO = ?
+	</entry>
+	<entry key="unregisterMember">
+		UPDATE "MEMBER" 
+		SET UNREGISTER_FLAG = 'Y'
+		WHERE MEMBER_PW = ?
+		AND MEMBER_NO =?
+	</entry>
+	
 	
 </properties>
 
