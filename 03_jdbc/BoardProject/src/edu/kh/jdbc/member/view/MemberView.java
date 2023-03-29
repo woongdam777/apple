@@ -77,7 +77,7 @@ public class MemberView {
 		System.out.println("회원번호 : " + Session.loginMember.getMemberNo());
 		System.out.println("아이디 : " + Session.loginMember.getMemberId());
 		System.out.println("이름 : " + Session.loginMember.getMemberName());
-		System.out.println("성별(남/여) : " + (Session.loginMember.getMemberName()=="M"?"남":"여"));
+		System.out.println("성별(남/여) : " + (Session.loginMember.getMemberGender().equals("M")?"남":"여"));
 		System.out.println("가입일 : " + Session.loginMember.getEnrollDate());
 	}
 	
