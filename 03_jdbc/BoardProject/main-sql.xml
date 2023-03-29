@@ -11,13 +11,13 @@
 		FROM "MEMBER"
 		WHERE MEMBER_ID = ?
 		AND MEMBER_PW = ?
-		AND UNREGISTER_FLAG = 'N'
+		AND UNREGISTER_FL = 'N'
 	</entry>
 
 	<!-- 아이디 중복 검사 -->
 	<entry key = "idDuplicateCheck">
 		SELECT COUNT(*) FROM "MEMBER" 
-		WHERE UNREGISTER_FLAG ='N'
+		WHERE UNREGISTER_FL ='N'
 		AND MEMBER_ID = ?
 	</entry>
 	<!-- 회원가입 -->
