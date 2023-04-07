@@ -32,7 +32,7 @@
     /* minmax(200px, 300px) :  평소에는 300px 화면이 줄어들면 200px까지 줄어들 수 있음 */
 
 
-    /* auto-fir / auto-fill */
+    /* auto-fit / auto-fill */
     /* grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); */
     /* grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); */
 
