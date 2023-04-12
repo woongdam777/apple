@@ -70,6 +70,7 @@ nav>section{
   }
 }
 .content div{
+  flex-direction: row;
   border: 1px solid black;
 }
 .content>.left{

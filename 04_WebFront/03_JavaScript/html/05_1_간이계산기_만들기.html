@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05_1_간이계산기_만들기</title>
+</head>
+<body>
+    두 수를 입력 받아 버튼에 작성된 연산을 수행하는 계산기 만들기
+    <!-- 
+        if, for, while, switch, break, continue 사용 가능    
+    -->
+
+    <hr>
+    
+    첫 번째 값 : <input type="text" id="input1"> <br>
+    두 번째 값 : <input type="text" id="input2"> <br>
+
+    <button onclick="calculator(this)">+</button>
+    <button onclick="calculator(this)">-</button>
+    <button onclick="calculator(this)">*</button>
+    <button onclick="calculator(this)">/</button>
+    <button onclick="calculator(this)">%</button>
+    <br><br>
+    계산 결과 : <span id="result"><!-- 여기에 결과 출력 --></span>
+
+    <script>
+        // 작성된 HTML 요소에 원하는 속성(id, class, onclick)을 작성하고
+        // 필요한 JS코드(function)를 이용하여 계산기 만들기
+        /* 
+            왜? 이어서 써질까??
+            -> HTML에서 얻어오는 모든 것은 다 string(문자열)
+            -> 얻어온 문자열이 숫자로만 되어있어
+                number타입으로 변환 시키고 싶으면 Number(문자열)작성
+        */
+        var num1 = document.getElementById("input1");
+        var num2 = document.getElementById("input2");
+
+        function plus(){
+            
+            var result = num1 + num2
+            document.getElementById("result").innerText = result;
+
+        }
+
+        function calculator(btn){
+            var op = btn.innerText;
+            var result = 0;
+
+            switch(op){
+                case '+' : result = Number(num1.value) + Number(num2.value); break;
+                case '-' : result = Number(num1.value) - Number(num2.value); break;
+                case '*' : result = Number(num1.value) * Number(num2.value); break;
+                case '/' : result = Number(num1.value) / Number(num2.value); break;
+                case '%' : result = Number(num1.value) % Number(num2.value); break;
+            }
+
+            document.getElementById("result").innerText = result;
+        }
+
+
+
+
+    </script>
+</body>
+</html>
