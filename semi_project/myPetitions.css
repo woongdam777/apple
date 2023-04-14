@@ -2,9 +2,10 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  /* border: 1px solid black; */
 }
 
-header ul, nav ul{ display: flex;}
+header ul, nav ul, header, .logomenu, .logomenuicon, .icon, .content, .graphText{ display: flex;}
 
 a{
   text-decoration: none;
@@ -23,26 +24,38 @@ main{
 
 /* header */
 header{
-  display: flex;
+  margin: auto;
   justify-content: center;
   align-items: center;
   border-bottom: 2px solid #ccc;
 }
 
-header>section:nth-child(1){width: 10%;}
-header>section:nth-child(2){width: 15%;}
-header>section:nth-child(3){width: 55%;}
-header>section:nth-child(4){width: 10%;}
-header>section:nth-child(5){width: 10%;}
+.logomenuicon{
+  width: 1140px;
+}
+
+.logomenu{
+  width: 85%;
+}
+.icon{
+  text-align: center;
+}
 
 /* 로고 */
-header>section:nth-child(2){
-  display: flex;
-  justify-content: center;
-  align-items: center;
+#logo{
+  display: inline-block;
   font-weight: bold;
   font-size: 30px;
   color: #2DB400; 
+}
+
+/* 아이콘 */
+.icon{
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  font-size: 24px;
+  
 }
 
 /* nav */
@@ -63,21 +76,18 @@ nav>section{
 
 /* content */
 .content{
-  display: flex;
+  justify-content: space-around;
+  background-color: #ccc;
+  height: 927px;
+  text-align: center;
+}
 
-  @media screen {
-    width 960px;
-  }
-}
-.content div{
-  flex-direction: row;
-  border: 1px solid black;
-}
-.content>.left{
-  flex-direction: row;
-  flex: 1.4 1 0%;
-  
-  font-size: 50px;
+.graphText{
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  border-top: 1px solid black;
 }
 
 

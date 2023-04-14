@@ -6,22 +6,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>myPetitions</title>
   <link rel="stylesheet" href="myPetitions.css">
+  <link rel="stylesheet" href="">
 </head>
 <body>
   <header>
-    <section></section>
-    <section>nojo.kh</section>
-    <section>
-      <ul>
-        <li><a href="#">Start a petition</a></li>
-        <li><a href="#">My petitions</a></li>
-        <li><a href="#">Browse</a></li>
-      </ul>
-    </section>
-    <section>
-      돋보기,로그인
-    </section>
-    <section></section>
+    <div class="title">
+      <div class="logomenuicon">
+        <div class="logomenu">
+          <div id="logo">nojo.kh</div>
+          <div>
+            <ul>
+              <li><a href="#">Start a petition</a></li>
+              <li><a href="#">My petitions</a></li>
+              <li><a href="#">Browse</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="icon">
+          <i class="fa-sharp fa-solid fa-magnifying-glass"></i>&nbsp;
+          <i class="fa-sharp fa-solid fa-user"></i>&nbsp;
+          <i class="fa-sharp fa-solid fa-bell"></i>
+        </div>
+      </div>
+    </div>
   </header>
   <main>
     <div>
@@ -42,16 +49,22 @@
       </div>
     </nav>
     <div class="content">
-      <div>
-        <div class="left">
-          <div a>그래프</div>
-          <div b>최근 동의자</div>
+      <div class="contentLeft" style="width: 50%;">
+        <div class="graph" style="height: 50%;display: flex;justify-content: center; align-items: center;">
+          <div style="background-color: white;width: 70%;height: 90%; border-radius: 15px;">
+            <div style="height: 80%;display: flex;justify-content: center; align-items: center;"><img src="graph.jpg"></img></div>
+            <div class="graphText" style="height: 20%;">
+              <div style="width: 50%; border-right: 1px solid black;">1 보기</div>
+              <div style="width: 50%">0 주</div>
+            </div>
+          </div>
         </div>
-        <div class="right">
-          <div c>너의 청원 공유</div>
-          <div d>너의 서포터 최신화</div>
-          <div e>너의 청원 마케팅</div>
-        </div>
+        <div style="height: 50%;">최근 동의자</div>
+      </div>
+      <div class="contentRight" style="width: 50%;">
+        <div style="height: 40%;">너의 청원 공유</div>
+        <div style="height: 30%;">너의 서포터 최신화</div>
+        <div style="height: 30%;">너의 청원 마케팅</div>
       </div>
     </div>
     <div class="checklist">
@@ -88,5 +101,6 @@
             <a href="#">고객센터</a>
         </article>
   </footer>
+  <script src="https://kit.fontawesome.com/fa1a384c97.js" crossorigin="anonymous"></script>
 </body>
 </html>
