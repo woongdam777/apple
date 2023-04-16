@@ -1,0 +1,92 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  /* border: 1px solid black; */
+}
+
+
+a{
+  text-decoration: none;
+  color: black;
+}
+
+li{
+  list-style: none;
+  padding: 15px;
+}
+
+/* header */
+header{ height: 57px; border-bottom: 2px solid #ccc; display: flex; justify-content: center;}
+
+.logomenuicon{
+  margin: auto;
+  padding-bottom: 5px;
+  width: 1140px;
+  display: flex;
+}
+
+.logo{flex-grow: 1;}
+.menu{flex-grow: 4;}
+.icon{flex-grow: 1;}
+
+/* 로고 */
+.logo{
+  text-align: center;
+  font-weight: bold;
+  font-size: 30px;
+  color: #2DB400; 
+}
+
+/* 메뉴 */
+.menu>ul{display: flex;}
+
+/* 아이콘 */
+.icon{
+  padding: 10px;
+  text-align: center;
+  font-size: 24px;
+}
+
+/* main */
+main{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.myPetitions{
+  height: 2000px;
+  width: 1140px;
+}
+
+
+/* footer */
+footer{
+  height: 200px;
+  background-color: #ccc;
+  
+  display: flex;
+  flex-direction: column;
+  
+  justify-content: center;
+  align-items: center;
+}
+
+footer>p{
+  font-weight: bold;
+  margin: 0 16px;
+}
+
+footer > article > *{
+  font-size: 14px;
+}
+
+footer a{
+  color: black;
+  text-decoration: none;
+}
+
+footer span{
+  padding: 0 10px;
+}

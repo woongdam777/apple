@@ -5,7 +5,6 @@
   /* border: 1px solid black; */
 }
 
-header ul, nav ul, header, .logomenu, .logomenuicon, .icon, .content, .graphText{ display: flex;}
 
 a{
   text-decoration: none;
@@ -17,52 +16,21 @@ li{
   padding: 15px;
 }
 
+
+/* main */
+
 main{
-  width: 1140px;
-  margin: auto;
-}
-
-/* header */
-header{
-  margin: auto;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-bottom: 2px solid #ccc;
-}
-
-.logomenuicon{
-  width: 1140px;
-}
-
-.logomenu{
-  width: 85%;
-}
-.icon{
-  text-align: center;
-}
-
-/* 로고 */
-#logo{
-  display: inline-block;
-  font-weight: bold;
-  font-size: 30px;
-  color: #2DB400; 
-}
-
-/* 아이콘 */
-.icon{
-  justify-content: center;
-  align-items: center;
-  margin: 10px;
-  font-size: 24px;
-  
+  background-color: #ccc;
 }
 
 /* nav */
-nav{
-  border-bottom: 2px solid #ccc;
-  
-}
+nav{width: 1140px; display: flex; flex-direction: column; background-color: white;}
+.nav>ul{display: flex;}
+
 nav>section:nth-child(1){width: 10%;}
 nav>section:nth-child(2){width: 80%;}
 nav>section:nth-child(3){width: 10%;}
@@ -77,24 +45,22 @@ nav>section{
 /* content */
 .content{
   justify-content: space-around;
-  background-color: #ccc;
+  width: 1140px;
   height: 927px;
   text-align: center;
+  border-top: 2px solid #000000;
 }
 
 .graphText{
-  flex-grow: 1;
   justify-content: center;
   align-items: center;
   font-size: 24px;
   border-top: 1px solid black;
 }
 
-
-
-
-
-
+.checklist{
+  background-color: white;
+}
 
 /* footer */
 footer{
