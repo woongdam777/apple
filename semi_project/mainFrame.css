@@ -60,6 +60,10 @@ main{
   width: 1140px;
 }
 
+iframe{
+  transform: scale(0.8);
+}
+
 
 /* footer */
 footer{
