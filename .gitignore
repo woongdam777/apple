@@ -11,9 +11,5 @@ bin/
 *.tar.gz
 *.rar
 
-# Servers 폴더
+
 Servers
-*.ttf
-*.zip
-*.tar.gz
-*.rar
