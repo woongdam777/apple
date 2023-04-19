@@ -20,23 +20,21 @@ li{
 header{ height: 57px; border-bottom: 2px solid #ccc; display: flex; justify-content: center;}
 
 .logomenuicon{
+  height: 100%;
   margin: auto;
-  padding-bottom: 5px;
-  width: 1140px;
+  width: 960px;
   display: flex;
 }
 
-.logo{flex-grow: 1;}
-.menu{flex-grow: 4;}
-.icon{flex-grow: 1;}
+.logo{width: 15%;}
+.menu{width: 70%;}
+.icon{width: 15%;}
 
 /* 로고 */
-.logo{
-  text-align: center;
-  font-weight: bold;
-  font-size: 30px;
-  color: #2DB400; 
-}
+
+.logo{display: flex; justify-content: center; align-items: center;}
+.logo img{height: 80%;}
+
 
 /* 메뉴 */
 .menu>ul{display: flex;}
@@ -53,21 +51,26 @@ main{
   display: flex;
   justify-content: center;
   align-items: center;
+  height: auto;
+  padding-bottom: 220px;
 }
 
-.myPetitions{
-  height: 2000px;
-  width: 1140px;
+.mainframe{
+  width: 960px;
+  min-height: 1000px;
 }
 
 iframe{
-  transform: scale(0.8);
+  min-height: 1000px;
 }
-
 
 /* footer */
 footer{
-  height: 200px;
+  width: 100%;
+  position: absolute;
+  transform: translateY(-100%);
+
+  height: 220px;
   background-color: #ccc;
   
   display: flex;
@@ -77,20 +80,26 @@ footer{
   align-items: center;
 }
 
-footer>p{
-  font-weight: bold;
-  margin: 0 16px;
+.footerList{
+  display: flex;
+  width: 960px;
+  justify-content: space-around;
 }
 
-footer > article > *{
-  font-size: 14px;
+.footerList *{
+  text-align: left;
+  padding: 5px;
 }
 
-footer a{
-  color: black;
-  text-decoration: none;
+.footerList h2{ font-size: 16px; }
+
+.footerList li{ font-size: 12px; }
+
+.last{
+  
+  width: 960px;
+  padding: 5px;
+  font-size: 12px;
+  border-top: 1px solid #828282;
 }
 
-footer span{
-  padding: 0 10px;
-}

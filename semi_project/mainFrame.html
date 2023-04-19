@@ -10,7 +10,7 @@
 <body>
   <header>
     <div class="logomenuicon">
-      <div class="logo">nojo.kh</div>
+      <div class="logo"><img class="logos" src="logo.png"></div>
       <div class="menu">
         <ul>
           <li><a id="startPetitions" href="#">Start a petition</a></li>
@@ -26,19 +26,48 @@
     </div>
   </header>
   <main>
-    <div id="mf"><iframe class="myPetitions" src="startPetitions/startPetitions.html"></iframe></div>
+    <div class="mainframe" id="mf"><iframe id="iframe" onload="iframeLoaded()" frameborder = "0" src="startPetitions/startPetitions.html"></iframe></div>
   </main>
   <footer>
-    <p>Copyright &copy; KH Information Educational Institute A-Class</p>
-        <article>
-            <a href="#">프로젝트 소개</a>
-            <span>|</span>
-            <a href="#">이용약관</a>
-            <span>|</span>
-            <a href="#">개인정보처리방침</a>
-            <span>|</span>
-            <a href="#">고객센터</a>
-        </article>
+    <div class="footerList">
+      <div>
+        <h2>COMPANY</h2>
+        <ul>
+          <li>About</li>
+          <li>Impact</li>
+          <li>Careers</li>
+          <li>Team</li>
+        </ul>
+      </div>
+      <div>
+        <h2>COMMUNITY</h2>
+        <ul>
+          <li>Blog</li>
+          <li>Community Guidelines</li>
+        </ul>
+      </div>
+      <div>
+        <h2>SUPPORT</h2>
+        <ul>
+          <li>Help</li>
+          <li>Guides</li>
+          <li>Privacy</li>
+          <li>Policies</li>
+          <li>Cookies</li>
+        </ul>
+      </div>
+      <div>
+        <h2>CONNECT</h2>
+        <ul>
+          <li>Twitter</li>
+          <li>Facebook</li>
+        </ul>
+      </div>
+    </div>
+    <div class="last">
+      Copyright &copy; nojo.kr<p>
+      This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.</p>
+    </div>
   </footer>
   <script src="mainFrame.js"></script>
   <script src="https://kit.fontawesome.com/fa1a384c97.js" crossorigin="anonymous"></script>
