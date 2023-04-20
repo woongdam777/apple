@@ -1,0 +1,183 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  /* border: 1px solid black; */
+}
+
+a{
+  text-decoration: none;
+  color: black;
+}
+
+/* header */
+header{ width: 960px; }
+
+header ul{
+  border-bottom: 2px solid #828282;
+  height: 53px;
+}
+header li{
+  list-style: none;
+  padding: 15px;
+  height: 53px;
+}
+
+header a:hover{color: red;}
+
+#navSelect{border-bottom: 3px solid red;}
+#navSelect>a{color: red;}
+
+/* main */
+
+main{
+  width: 960px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #ccc;
+}
+
+/* nav */
+nav{
+  width: 960px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}
+
+.nav>ul{display: flex;}
+
+/* content */
+.content{
+  display: flex;
+  justify-content: space-around;
+  width: 960px;
+  height: 927px;
+  text-align: center;
+}
+/* 내부틀 */
+#contentFrame{
+  background-color: white;
+  border: 2px solid #828282;
+  width: 80%;
+  height: 90%;
+  border-radius: 5px;
+}
+
+.contentLeft{width: 40%;}
+
+.graph{
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contentFrameImg{
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center
+}
+
+.graphText{
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  border-top: 2px solid #828282;
+}
+
+.agree{
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contentRight{width: 60%;}
+
+.share{
+  height: 55%;
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+}
+
+.shareContent{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;  
+  text-align: left;
+
+}
+
+.shareContent div{
+  padding: 5px;
+}
+
+.shareContent input{
+  width: 60%;
+  height: 40px;
+  font-size: 20px;
+}
+
+.shareContent button{
+  width: 70px;
+  height: 40px;
+}
+
+.outlink{
+  display: flex;
+  justify-content: space-around;
+}
+
+.reflesh{
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.marketing{
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.checklist{
+  background-color: white;
+}
+
+/* footer */
+footer{
+  height: 200px;
+  background-color: #ccc;
+  
+  display: flex;
+  flex-direction: column;
+  
+  justify-content: center;
+  align-items: center;
+}
+
+footer>p{
+  font-weight: bold;
+  margin: 0 16px;
+}
+
+footer > article > *{
+  font-size: 14px;
+}
+
+footer a{
+  color: black;
+  text-decoration: none;
+}
+
+footer span{
+  padding: 0 10px;
+}
