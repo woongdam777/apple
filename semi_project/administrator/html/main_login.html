@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>"VOTE MAIN"</title>
+    <link rel="stylesheet" type="text/css" href="../css/main_login.css" />
+  </head>
+
+  <body>
+    <div id="wrap">
+      <div id="header">
+        <a href="http://www.naver.com" class="logo">
+          <img src="../img/voteLogo2.png" alt="로고" id="voteLogo"
+        /></a>
+        <div id="admin">administrator</div>
+      </div>
+      <div id="container">
+        <div id="contents">
+          <form action="#" id="login" action="" method="POST">
+            <div id="id_area">
+              <input
+                type="text"
+                name="id"
+                id="id"
+                placeholder="아이디"
+                class="idpw"
+              />
+            </div>
+            <div id="pw_area">
+              <input
+                type="password"
+                name="pw"
+                id="pw"
+                placeholder="비밀번호"
+                class="idpw"
+              />
+            </div>
+            <button id="loginBtn" type="submit" class="btn_login">
+              로그인
+            </button>
+            <div id="check">
+              <div id="login_check">
+                <input type="checkbox" name="login_chk" id="login_chk" />
+                <!-- <label for="login_chk"><span></span>로그인 상태 유지</label> -->
+                <button class="adminSignUp" onclick="openSignUpAdmin()">
+                  관리자 회원가입
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="../js/main_login.js"></script>
+  </body>
+</html>

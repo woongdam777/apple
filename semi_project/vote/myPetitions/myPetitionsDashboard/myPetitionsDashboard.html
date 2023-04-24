@@ -8,99 +8,161 @@
   <link rel="stylesheet" href="myPetitionsDashboard.css">
 </head>
 <body>
-  <header>
-    <nav>
-      <div class="title">
-        <h2>청원 글제목</h2>
-      </div>
-      <div class="nav">
-        <ul>
-          <li id="navSelect"><a href="#">Dashboard</a></li>
-          <li><a href="#">Petition details</a></li>
-          <li><a href="#">Edit</a></li>
-          <li><a href="#">Comments</a></li>
-        </ul>
-      </div>
-    </nav>
-  </header>
+  <header></header>
   <main>
+    <div class="title">
+      <nav>
+        <div class="naTtitle">
+          <h2>청원 글제목</h2>
+        </div>
+        <div class="nav">
+          <ul>
+            <li id="navSelect"><a href="#">Dashboard</a></li>
+            <li><a href="#">Petition details</a></li>
+            <li><a href="#">Edit</a></li>
+            <li><a href="#">Comments</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
     <div class="content">
-      <div class="contentLeft">
-        <div class="graph">
-          <div id="contentFrame">
-            <div class="contentFrameImg"><img src="graph.jpg"></img></div>
-            <div class="graphText">
-              <div style="width: 50%; border-right: 1px solid black;">1 보기</div>
-              <div style="width: 50%">0 주</div>
+      <div class="contentdashborad">
+        <div class="contentLeft">
+          <div class="graph">
+            <div id="contentFrame">
+              <div class="contentFrameImg"><img src="graph.jpg"></img></div>
+              <div class="graphText">
+                <div>1 보기</div>
+                <div>0 주</div>
+              </div>
+            </div>
+          </div>
+          <div class="agree">
+            <div id="contentFrame">
+              최근 동의자
             </div>
           </div>
         </div>
-        <div class="agree">
-          <div id="contentFrame">
-            최근 동의자
+        <div class="contentRight">
+          <div class="share">
+            <div class="shareContent" id="contentFrame">
+              <div>
+                <div><h3>당신의 청원을 공유하세요</h3></div>
+                <div>
+                  <p>
+                    성공적인 청원 시작자들은 약 12번의 청원을 공유합니다. 가능한 한 다양한 플랫폼에서 공유하고 추진력을 높이기 위해 다른 사람들에게 청원서에 서명하고 공유하도록 요청하세요!
+                  </p>
+                </div>
+              </div>
+              <div>
+                <div class="inputUrl">
+                  <input type="url" value="https://chng.it/Sz2tMGgB">
+                  <button><i class="fa-solid fa-link"></i>   복사</button>
+                </div>
+              </div>
+              <div class="shareLink">
+                <div> <a href="#">링크 수정</a> 더 쉽게 공유할수 있도록 수정하세요!</div>
+              </div>
+              <div>
+                <div class="outlink">
+                  <div><button><i class="fa-brands fa-facebook"></i> 페이스북</button></div>
+                  <div><button><i class="fa-brands fa-square-twitter"></i> 트위터</button></div>
+                  <div><button><i class="fa-regular fa-envelope"></i> 이메일</button></div>
+                  <div><button><i class="fa-sharp fa-solid fa-phone"></i> 왓츠앱</button></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="reflesh">
+            <div id="contentFrame">
+              <div>
+                <div><h3>지지자 업데이트</h3></div>
+                <div>
+                  <p>
+                    귀하의 청원, 언론 보도에 대한 뉴스 및 발전 사항을 공유하고 감사의 말을 전하거나 승리하는 데 필요한 도움을 요청하기 위해 업데이트를 보내십시오! 게시한 업데이트는 청원서에 표시되고 후원자에게 이메일로 전송됩니다.
+                  </p>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <a href="#">업데이트 게시</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="marketing">
+            <div id="contentFrame">
+              <div>
+                <div><h3>당신의 청원을 공유하세요</h3></div>
+                <div>
+                  <p>
+                    귀하 또는 귀하의 서명자는 귀하의 청원을 홍보하기 위해 참여할 수 있습니다. 귀하의 청원이 홍보되면 우리는 그것을 지지할 가능성이 있는 다른 Change.org 사용자들에게 보여주기 시작합니다.
+                  </p>
+                </div>
+              </div>
+              <div>
+                <div class="mkt">
+                  <a id="mkt" href="#">홍보하다</a>
+                  <a href="#">더 알아보기</a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="contentRight">
-        <div class="share">
-          <div class="shareContent" id="contentFrame">
-            <div>
-              <div><h2>당신의 청원을 공유하세요</h2></div>
-              <div>
-                <p>
-                  성공적인 청원 시작자들은 약 12번의 청원을 공유합니다. 가능한 한 다양한 플랫폼에서 공유하고 추진력을 높이기 위해 다른 사람들에게 청원서에 서명하고 공유하도록 요청하세요!
-                </p>
-              </div>
-            </div>
-            <div>
-              <div>
-                <input type="url" value="https://chng.it/Sz2tMGgB">
-                <button>이미지 복사</button>
-              </div>
-            </div>
-            <div>
-              <div><a id="link" href="#">링크 수정 더 쉽게 공유할수 있도록</a></div>
-            </div>
-            <hr>
-            <div>
-              <div class="outlink">
-                <div><button>페이스북</button></div>
-                <div><button>트위터</button></div>
-                <div><button>이메일</button></div>
-                <div><button>왓츠앱</button></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="reflesh">
-          <div id="contentFrame">너의 서포터 최신화</div>
-        </div>
-        <div class="marketing">
-          <div id="contentFrame">너의 청원 마케팅</div>
+      <div class="checkList">
+        <h2>청원 체크리스트</h2>
+        <div class="list">
+          <ul>
+            <li><div><h3>사진 또는 비디오 추가</h3>사진이나 동영상이 있는 청원은 6배 더 많은 서명을 받습니다.</div></li>
+            <li><hr></li>
+            <li><div><h3>프로필 사진 추가</h3>사람들은 실제 사람이 보낸 청원임을 알 때 청원을 지지할 가능성이 더 높습니다.</div></li>
+            <li><hr></li>
+            <li><div><h3>이웃, 도시, 주 또는 국가 추가</h3>청원은 특정 위치에 관심이 있는 사람들에게 권장됩니다.</div></li>
+            <li><hr></li>
+            <li><div><h3>의사 결정권자의 연락처 정보 추가</h3>새로운 이정표에 도달하면 의사 결정권자에게 알림이 전송됩니다.</div></li>
+            <li><hr></li>
+            <li><div><h3>스마트 이미지</h3>다른 이미지를 시도하여 어떤 이미지가 더 많은 서명을 제공하는지 확인하십시오.</div></li>
+            <li><hr></li>
+            <li><div><h3>주제 추가</h3></div></li>
+            <li><hr></li>
+            <li><div><h3>해결하려는 문제를 설명하십시오.</h3></div></li>
+            <li><hr></li>
+            <li><div><h3>의사 결정권자를 선택하십시오.</h3></div></li>
+            <li><hr></li>
+            <li><div><h3>제목 쓰기</h3></div></li>
+          </ul>
         </div>
       </div>
     </div>
-    <div class="checklist">
-      <ul>
-        <li>Add a photo or video</li>
-        <li><hr></li>
-        <li>Add your profile photo</li>
-        <li><hr></li>
-        <li>Add a neighborhood, city, state, or country</li>
-        <li><hr></li>
-        <li>Add your decision maker's contact information</li>
-        <li><hr></li>
-        <li>Smart images</li>
-        <li><hr></li>
-        <li>Add topics</li>
-        <li>Explain the problem you want to solve</li>
-        <li>Choose a decision maker</li>
-        <li>Write a title</li>
-      </ul>
-    </div>
-    <div guide>
-
+    <div class="guide">
+      <div class="guideLeft">
+        <div>
+          <div><h3>청원안내</h3></div>
+          <div>
+            <p>청원 가이드에는 청원을 시작하고, 캠페인을 구축하고, 목표를 달성하는 데 도움이 되는 리소스가 있습니다.</p>
+          </div>
+        </div>
+      </div>
+      <div class="guideRight">
+          <div>
+            <div><h3>청원관리</h3></div>
+            <div>
+              <p>
+                의사 결정자와 합의에 이르렀습니까? 당신의 청원이 승리했음을 선언하고 당신의 지지자들이 그것을 실현하는 데 어떻게 도움이 되었는지 알려주세요.
+              </p>
+            </div>
+          </div>
+          <div>
+            <div>
+              <a id="mkt" href="#">홍보하다</a>
+              <a href="#">더 알아보기</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </main>
+  <script src="https://kit.fontawesome.com/fa1a384c97.js" crossorigin="anonymous"></script>
 </body>
 </html>
