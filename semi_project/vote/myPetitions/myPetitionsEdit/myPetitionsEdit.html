@@ -38,44 +38,85 @@
             <h2>청원 내용</h2>
           </div>
           <div class="content-title">
-            <h3>제목수정</h3>
+            <div class="content-side-title">
+              <h3>제목수정</h3>
+              <a href="#">팁 보기</a>
+            </div>
             <textarea name="conTitle" id="" rows="3" placeholder="청원 제목을 입력해주세요."></textarea>
           </div>
           <div class="description">
-            <h3>본문수정</h3>
+            <div class="content-side-title">
+              <h3>본문수정</h3>
+              <a href="#">팁 보기</a>
+            </div>
             <div id="summernote"></div>
           </div>
-          <div class="img-link"><a href="#">이제 동영상과 이미지로 청원을 돋보이게 만들수 있습니다. 여기에서 시도하십시오!</a></div>
+          <div class="img-link"><a href="#">이제 동영상과 이미지로 청원을 돋보이게 만들 수 있습니다. 여기에서 시도하십시오!</a></div>
           <div>
-            이미지 / 영상
-            <textarea name="conTitle" id="" rows="3"></textarea>
+            <div class="content-side-title">
+              <h3>이미지</h3>
+              <a href="#">팁 보기</a>
+            </div>
+            <div class="content-img">
+              <div>사진 또는 비디오에 대한 링크 붙여넣기</div>
+              <div class="content-img-url">
+                <input type="url" placeholder="http://">
+                <button>추가하다</button>
+              </div>
+              <hr>
+              <div class="content-img-up">
+                <div class="content-img-up-button"><button>사진 업로드</button></div>
+                <div><p>사진은 최소 1200 × 675 픽셀이어야 합니다. 텍스트가 없는 큰 사진이 가장 좋습니다.</p></div>
+              </div>
+            </div>
           </div>
           <div class="content-data">
             <h2>청원 데이터</h2>
           </div>
           <div>
-            범위
+            <div class="content-date-side-title">
+              <h3>범위</h3>
+              <a href="#"><i class="fa-regular fa-circle-question"></i></a>
+            </div>
+            <select class="scope">
+              <option value="">Select a scope</option>
+              <option value="">Local</option>
+              <option value="">National</option>
+              <option value="">Global</option>
+            </select>
+          </div>
+          <div>
+            <div class="content-date-side-title">
+              <h3>위치</h3>
+              <a href="#"><i class="fa-regular fa-circle-question"></i></a>
+            </div>
             <textarea name="conTitle" id="" rows="3"></textarea>
           </div>
           <div>
-            위치
+            <div class="content-date-side-title">
+              <h3>주제추가</h3>
+              <a href="#"><i class="fa-regular fa-circle-question"></i></a>
+            </div>
             <textarea name="conTitle" id="" rows="3"></textarea>
           </div>
           <div>
-            주제추가
+            <div class="content-date-side-title">
+              <h3>결정권자</h3>
+              <a href="#"><i class="fa-regular fa-circle-question"></i></a>
+            </div>
             <textarea name="conTitle" id="" rows="3"></textarea>
           </div>
           <div>
-            결정권자
-            <textarea name="conTitle" id="" rows="3"></textarea>
-          </div>
-          <div>
-            기본트위터메시지
+            <div class="content-date-side-title">
+              <h3>기본트위터메시지</h3>
+              <a href="#"><i class="fa-regular fa-circle-question"></i></a>
+            </div>
             <textarea name="conTitle" id="" rows="3"></textarea>
           </div>
         </form>
       </div>
     </div>
+    <script src="https://kit.fontawesome.com/fa1a384c97.js" crossorigin="anonymous"></script>
     <script>
       $('#summernote').summernote({
         placeholder: 'Hello stand alone ui',

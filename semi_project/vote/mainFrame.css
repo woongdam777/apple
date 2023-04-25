@@ -42,10 +42,17 @@ header{ height: 57px; border-bottom: 2px solid #ccc; display: flex; justify-cont
 
 /* 아이콘 */
 .icon{
-  padding: 10px;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 24px;
 }
+
+.icon> *{
+  padding: 7px;
+}
+
+#bell{display: none;}
 
 /* main */
 main{
