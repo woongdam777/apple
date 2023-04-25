@@ -1,400 +1,293 @@
 package edu.kh.jdbc.model.dao;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-
-import static edu.kh.jdbc.common.JDBCTemplate.*;
-
 import edu.kh.jdbc.model.dto.Emp;
+
+import java.sql.*;
+import java.util.*;
+
+import static edu.kh.jdbc.common.JDBCTemplate.close;
 
 public class EmpDAO {
 
 	private Statement stmt;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
-	
-	
-	/** 재직중인 사원 전체 조회 SQL
+
+	/**
+	 * 재직중인 전체 직원 정보 확인
 	 * @param conn
 	 * @return
 	 * @throws SQLException
 	 */
-	public List<Emp> selectAll(Connection conn) throws SQLException{
-
+    public List<Emp> selectAll(Connection conn) throws SQLException {
+		String sql = "SELECT EMP_ID, EMP_NAME, DEPT_TITLE, JOB_NAME, SALARY, PHONE, EMAIL \n" +
+				"FROM EMPLOYEE NATURAL JOIN JOB LEFT JOIN DEPARTMENT ON(DEPT_ID=DEPT_CODE)\n" +
+				"WHERE ENT_YN='N' \n" +
+				"ORDER BY JOB_CODE";
 		List<Emp> empList = new ArrayList<>();
+
 		try {
-			String sql = "SELECT EMP_ID , EMP_NAME , DEPT_TITLE, JOB_NAME, SALARY, PHONE, EMAIL\r\n"
-					+ "FROM EMPLOYEE \r\n"
-					+ "LEFT JOIN DEPARTMENT ON (DEPT_CODE = DEPT_ID)\r\n"
-					+ "JOIN JOB USING(JOB_CODE)\r\n"
-					+ "WHERE ENT_YN = 'N'\r\n"
-					+ "ORDER BY DEPT_CODE";
-			
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql);
-			
+
 			while(rs.next()) {
-				
-				int empId = rs.getInt(1);
-				String empName = rs.getString(2);
-				String deptTitle = rs.getString(3);
-				String jobName = rs.getString(4);
-				int salary = rs.getInt(5);
-				String phone = rs.getString(6);
-				String email = rs.getString(7);
-				
-				Emp emp = new Emp();
-				
-				emp.setEmpId(empId);
-				emp.setEmpName(empName);
-				emp.setDepartmentTitle(deptTitle);
-				emp.setJobName(jobName);
-				emp.setSalary(salary);
-				emp.setPhone(phone);
-				emp.setEmail(email);
-				
-				empList.add(emp);
+				Emp e = new Emp();
+				e.setEmpId(rs.getInt("EMP_ID"));
+				e.setEmpName(rs.getString("EMP_NAME"));
+				e.setDepartmentTitle(rs.getString("DEPT_TITLE"));
+				e.setJobName(rs.getString("JOB_NAME"));
+				e.setSalary(rs.getInt("SALARY"));
+				e.setPhone(rs.getString("PHONE"));
+				e.setEmail(rs.getString("EMAIL"));
+				empList.add(e);
 			}
-		}finally {
+		} finally {
+			close(rs);
+			close(stmt);
+		}
+
+		return empList;
+    }
+
+	/**
+	 * 퇴직한 사원 전체 조회
+	 * @param conn
+	 * @return
+	 * @throws SQLException
+	 */
+	public List<Emp> selectRetiredAll(Connection conn) throws SQLException {
+		// 현재 퇴직한 사원의
+		// 사번, 이름, 전화번호, 이메일, 퇴사일을
+		// 퇴사일 오름차순으로 조회
+		String sql = "SELECT EMP_ID, EMP_NAME, PHONE, EMAIL, ENT_DATE\n" +
+				"FROM EMPLOYEE WHERE ENT_YN = 'Y' ORDER BY ENT_DATE";
+		List<Emp> empList = new ArrayList<>();
+
+		try {
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+
+			while (rs.next()) {
+				Emp e = new Emp();
+				e.setEmpId(rs.getInt("EMP_ID"));
+				e.setEmpName(rs.getString("EMP_NAME"));
+				e.setPhone(rs.getString("PHONE"));
+				e.setEmail(rs.getString("EMAIL"));
+				e.setEntDate(rs.getDate("ENT_DATE").toString());
+				empList.add(e);
+			}
+		} finally {
 			close(rs);
 			close(stmt);
 		}
 		return empList;
 	}
 
+	public Emp selectOneByID(Connection conn, int id) throws SQLException {
+		String sql = "SELECT EMP_ID, EMP_NAME, DEPT_TITLE, JOB_NAME, SALARY, PHONE, EMAIL, HIRE_DATE, ENT_YN \n" +
+				"FROM EMPLOYEE NATURAL JOIN JOB LEFT JOIN DEPARTMENT ON(DEPT_ID=DEPT_CODE) WHERE EMP_ID=?";
+		Emp e = null;
 
-	/** 퇴직한 사원 전체 조회 SQL
-	 * @param conn
-	 * @return
-	 * @throws SQLException
-	 */
-	public List<Emp> selectRetire(Connection conn) throws SQLException{
-
-		List<Emp> empList = new ArrayList<>();
 		try {
-			
-			String sql = "SELECT EMP_ID , EMP_NAME , PHONE, EMAIL, ENT_DATE \r\n"
-					+ "FROM EMPLOYEE \r\n"
-					+ "WHERE ENT_YN = 'Y'\r\n"
-					+ "ORDER BY ENT_DATE";
-			
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery(sql);
-			
-			while(rs.next()) {
-				
-				int empId = rs.getInt(1);
-				String empName = rs.getString(2);
-				String phone = rs.getString(3);
-				String email = rs.getString(4);
-				String entDay = rs.getString(5);
-				
-				Emp emp = new Emp();
-				
-				emp.setEmpId(empId);
-				emp.setEmpName(empName);
-				emp.setPhone(phone);
-				emp.setEmail(email);
-				emp.setEntDate(entDay);
-				
-				empList.add(emp);
-			}
-		}finally {
-			close(rs);
-			close(stmt);
-		}
-		return empList;
-	}
-
-
-	/** 사번이 일치하는 사원 조회 SQL
-	 * @param conn
-	 * @param input
-	 * @return
-	 */
-	public Emp selectEmp(Connection conn, int input) throws SQLException{
-		
-		Emp emp = null;
-		try {
-			String sql = "SELECT EMP_ID , EMP_NAME , DEPT_TITLE, JOB_NAME, SALARY, PHONE, EMAIL, HIRE_DATE \r\n"
-					+ "FROM EMPLOYEE \r\n"
-					+ "LEFT JOIN DEPARTMENT ON (DEPT_CODE = DEPT_ID)\r\n"
-					+ "JOIN JOB USING(JOB_CODE)\r\n"
-					+ "WHERE EMP_ID = ?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, input);
+			pstmt.setInt(1, id);
 			rs = pstmt.executeQuery();
-			
 			if(rs.next()) {
-				
-				int empId = rs.getInt(1);
-				String empName = rs.getString(2);
-				String deptTitle = rs.getString(3);
-				String jobName = rs.getString(4);
-				int salary = rs.getInt(5);
-				String phone = rs.getString(6);
-				String email = rs.getString(7);
-				Date hireDate = rs.getDate(8);
-				
-				emp = new Emp();
-				
-				emp.setEmpId(empId);
-				emp.setEmpName(empName);
-				emp.setDepartmentTitle(deptTitle);
-				emp.setJobName(jobName);
-				emp.setSalary(salary);
-				emp.setPhone(phone);
-				emp.setEmail(email);
-				emp.setHireDate(hireDate);
+				e = new Emp();
+				e.setEmpId(rs.getInt(1));
+				e.setEmpName(rs.getString(2));
+				e.setDepartmentTitle(rs.getString(3));
+				e.setJobName(rs.getString(4));
+				e.setSalary(rs.getInt(5));
+				e.setPhone(rs.getString(6));
+				e.setEmail(rs.getString(7));
+				e.setHireDate(rs.getDate(8));
+				e.setEntYN(rs.getString(9));
 			}
-			
-		}finally {
+		} finally {
 			close(rs);
 			close(pstmt);
 		}
-		return emp;
+		return e;
 	}
 
-
-	/** 사원 정보 추가 SQL
+	/**
+	 * 신규 사원 추가
 	 * @param conn
-	 * @param emp
+	 * @param e
 	 * @return
 	 * @throws SQLException
 	 */
-	public int empInsert(Connection conn, Emp emp) throws SQLException{
+	public int insertEmp(Connection conn, Emp e) throws SQLException {
+		String sql = "INSERT INTO EMPLOYEE VALUES(SEQ_EMP_ID.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, SYSDATE, NULL, 'N')";
 		int result = 0;
-		
+
 		try {
-			String sql = "INSERT INTO EMPLOYEE VALUES(SEQ_EMP_ID.NEXTVAL,?,?,?,?,?,?,?,?,?,?, SYSDATE, NULL, 'N')";
 			pstmt = conn.prepareStatement(sql);
-			
-			pstmt.setString(1,emp.getEmpName());
-			pstmt.setString(2,emp.getEmpNo());
-			pstmt.setString(3,emp.getEmail());
-			pstmt.setString(4,emp.getPhone());
-			pstmt.setString(5,emp.getDeptCode());
-			pstmt.setString(6,emp.getJobCode());
-			pstmt.setString(7,emp.getSalLevel());
-			pstmt.setInt(8,emp.getSalary());
-			pstmt.setDouble(9,emp.getBonus());
-			pstmt.setInt(10,emp.getManagerId());
-			
+			pstmt.setString(1, e.getEmpName());
+			pstmt.setString(2, e.getEmpNo());
+			pstmt.setString(3, e.getEmail());
+			pstmt.setString(4, e.getPhone());
+			pstmt.setString(5, e.getDeptCode());
+			pstmt.setString(6, e.getJobCode());
+			pstmt.setString(7, e.getSalLevel());
+			pstmt.setInt(8, e.getSalary());
+			pstmt.setDouble(9, e.getBonus());
+			pstmt.setInt(10, e.getManagerId());
 			result = pstmt.executeUpdate();
-			
-			
-		}finally {
+		} finally {
 			close(pstmt);
 		}
-		
-		
 		return result;
 	}
 
-
-	/**사번으로 사원 정보 수정 SQL
+	/**
+	 * 사원번호로 사원 수정
 	 * @param conn
-	 * @param input
 	 * @param emp
 	 * @return
 	 * @throws SQLException
 	 */
-	public int updateEmp(Connection conn, int input, Emp emp) throws SQLException{
+	public int updateEmpById(Connection conn, Emp emp) throws SQLException {
 		int result = 0;
-		
+		String sql = "update EMPLOYEE SET email=?, phone=?, BONUS=?, SALARY=? WHERE emp_id=?";
+
 		try {
-			String sql = "UPDATE EMPLOYEE \r\n"
-					+ "SET EMAIL =?,PHONE =?,SALARY =?, BONUS =?\r\n"
-					+ "WHERE EMP_ID = " + input;
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, emp.getEmail());
 			pstmt.setString(2, emp.getPhone());
-			pstmt.setInt(3, emp.getSalary());
-			pstmt.setDouble(4, emp.getBonus());
-			
+			pstmt.setDouble(3, emp.getBonus());
+			pstmt.setInt(4, emp.getSalary());
+			pstmt.setInt(5, emp.getEmpId());
 			result = pstmt.executeUpdate();
-		}finally {
+		} finally {
 			close(pstmt);
 		}
 		return result;
 	}
 
-
-	/** 사번으로 사원 정보 삭제 SQL
+	/**
+	 * 사원 삭제
 	 * @param conn
-	 * @param input
+	 * @param id
 	 * @return
 	 * @throws SQLException
 	 */
-	public int deleteEmp(Connection conn, int input) throws SQLException{
+	public int deleteById(Connection conn, int id) throws SQLException {
+		String sql = "DELETE FROM EMPLOYEE WHERE EMP_ID=?";
 		int result = 0;
+
 		try {
-			String sql = "DELETE FROM EMPLOYEE WHERE EMP_ID =?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, input);
+			pstmt.setInt(1, id);
 			result = pstmt.executeUpdate();
-		}finally {
+		} finally {
 			close(pstmt);
+		}
+
+		return result;
+	}
+
+	/**
+	 * 퇴직 처리
+	 * @param conn
+	 * @param id
+	 * @return
+	 * @throws SQLException
+	 */
+	public int updateRetireById(Connection conn, int id) throws SQLException {
+		String sql = "UPDATE EMPLOYEE SET ENT_DATE=SYSDATE, ENT_YN='Y' WHERE EMP_ID=?";
+		int result = 0;
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, id);
+			result = pstmt.executeUpdate();
+		} finally {
+			close(pstmt);
+		}
+
+		return result;
+	}
+
+	public List<Emp> selectLatestEnterTop5(Connection conn) throws SQLException {
+		String sql = "SELECT * FROM (\n" +
+				"\tSELECT EMP_ID, EMP_NAME, NVL(DEPT_TITLE, '소속없음') DEPT_TITLE, HIRE_DATE\n" +
+				"\tFROM EMPLOYEE LEFT JOIN DEPARTMENT ON(DEPT_CODE=DEPT_ID)\n" +
+				"\tORDER BY HIRE_DATE DESC)\n" +
+				"WHERE ROWNUM <= 5";
+		List<Emp> empList = new ArrayList<>();
+
+		try {
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+
+			while(rs.next()) {
+				Emp emp = new Emp();
+				emp.setEmpId(rs.getInt(1));
+				emp.setEmpName(rs.getString(2));
+				emp.setDepartmentTitle(rs.getString(3));
+				emp.setHireDate(rs.getDate(4));
+				empList.add(emp);
+			}
+
+		} finally {
+			close(rs);
+			close(stmt);
+		}
+		return empList;
+	}
+
+	public List<Map<String, String>> departmentStatistics(Connection conn) throws SQLException {
+		String sql = "SELECT COUNT(*) PEOPLE, " +
+				"NVL(DEPT_TITLE,'소속없음') DEPT_TITLE, " +
+				"TO_CHAR(ROUND(AVG(SALARY)), 'L999,999,999') SALARY\n" +
+				"FROM EMPLOYEE LEFT JOIN DEPARTMENT ON(DEPT_CODE=DEPT_ID)\n" +
+				"GROUP BY DEPT_TITLE, DEPT_CODE\n" +
+				"ORDER BY DEPT_CODE";
+		List<Map<String, String>> result = new ArrayList<>();
+
+		try {
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+
+			while(rs.next()) {
+				Map<String, String> map = new HashMap<String, String>();
+//				Map<String, String> map = new LinkedHashMap<>();
+				map.put("deptTitle", rs.getString("DEPT_TITLE"));
+				map.put("people", rs.getString("PEOPLE"));
+				map.put("salaryAvg", rs.getString("SALARY").trim());
+				result.add(map);
+			}
+		} finally {
+			close(rs);
+			close(stmt);
 		}
 		return result;
 	}
 
-	/** 존재하는 사원인지, 퇴직한 사원인지 결과를 반환 SQL
+	/**
+	 * 조회 SQL 수행 후 결과 반환
 	 * @param conn
 	 * @param input
 	 * @return
 	 * @throws SQLException
 	 */
-	public int checkretireEmp(Connection conn, int input) throws SQLException{
-
+	public int checkEmployee(Connection conn, int input) throws SQLException {
+		String sql = "SELECT DECODE(ENT_YN, 'Y', 1, 'N', 2) FROM EMPLOYEE WHERE EMP_ID=?";
 		int check = 0;
+
 		try {
-			String sql = "SELECT CASE \r\n"
-					+ "      -- 존재하지 않는 사원?\r\n"
-					+ "      WHEN (SELECT COUNT(*) FROM EMPLOYEE WHERE EMP_ID = ?) = 0\r\n"
-					+ "      THEN 0\r\n"
-					+ "      -- 존재하지만 퇴직한 사원?\r\n"
-					+ "      WHEN (SELECT COUNT(*) FROM EMPLOYEE \r\n"
-					+ "           WHERE EMP_ID = ? AND ENT_YN = 'Y') = 1\r\n"
-					+ "      THEN 1\r\n"
-					+ "      -- 존재는 하지만 퇴직하지 않은 사원!\r\n"
-					+ "      ELSE 2\r\n"
-					+ "   END \"CHECK\"\r\n"
-					+ "FROM DUAL";
-			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, input);
-			pstmt.setInt(2, input);
-			
 			rs = pstmt.executeQuery();
-			
 			if(rs.next()) {
 				check = rs.getInt("CHECK");
 			}
-			
-		}finally {
+		} finally {
 			close(rs);
 			close(stmt);
 		}
 		return check;
 	}
-	
-	/** 사번이 일치하는 사원 퇴직 처리 SQL
-	 * @param conn
-	 * @param input
-	 * @return
-	 * @throws SQLException
-	 */
-	public /*int*/ void retireEmp(Connection conn, int input) throws SQLException{
-//		int result = 0;
-		try {
-			String sql = "UPDATE EMPLOYEE SET ENT_YN = 'Y',ENT_DATE = SYSDATE WHERE EMP_ID = ? AND ENT_YN = 'N'";
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, input);
-//			result = pstmt.executeUpdate();
-			pstmt.executeQuery();
-		}finally {
-			close(pstmt);
-		}
-		
-//		return result;
-	}
-
-
-	/** 가장 최근 입사한 사원 5명 조회 SQL
-	 * @param conn
-	 * @return
-	 * @throws SQLException
-	 */
-	public List<Emp> fiveEmp(Connection conn) throws SQLException{
-		List<Emp> empList = new ArrayList<>();
-		try {
-			String sql = "SELECT *\r\n"
-					+ "FROM (SELECT EMP_ID ,EMP_NAME, DEPT_TITLE, HIRE_DATE \r\n"
-					+ "		FROM EMPLOYEE \r\n"
-					+ "		LEFT JOIN DEPARTMENT ON(DEPT_CODE = DEPT_ID)\r\n"
-					+ "		ORDER BY HIRE_DATE DESC)\r\n"
-					+ "WHERE ROWNUM <= 5";
-			
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery(sql);
-			while(rs.next()) {
-				int empId = rs.getInt(1);
-				String empName = rs.getString(2);
-				String deptTitle = rs.getString(3);
-				Date hireDate = rs.getDate(4);
-				
-				Emp emp = new Emp();
-				emp.setEmpId(empId);
-				emp.setEmpName(empName);
-				emp.setDepartmentTitle(deptTitle);
-				emp.setHireDate(hireDate);
-				
-				empList.add(emp);
-			}			
-		}finally {
-			close(rs);
-			close(stmt);
-		}
-		return empList;
-	}
-
-
-	/** 부서별 통계 조회 SQL
-	 * @param <empMap>
-	 * @param conn
-	 * @return
-	 * @throws SQLException
-	 */
-	public List<Object> deptEmp(Connection conn) throws SQLException{
-		
-		List<Object> empList = new ArrayList<>();		
-		
-		
-		try {
-			String sql = "SELECT DEPT_CODE, NVL(DEPT_TITLE,'부서없음') 부서명, COUNT(*) 인원, FLOOR(AVG(SALARY)) 평균 \r\n"
-					+ "FROM EMPLOYEE \r\n"
-					+ "LEFT JOIN DEPARTMENT ON (DEPT_CODE = DEPT_ID)\r\n"
-					+ "GROUP BY DEPT_TITLE, DEPT_CODE\r\n"
-					+ "ORDER BY DEPT_CODE";
-			
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery(sql);
-			while(rs.next()) {
-				
-				String deptTitle = rs.getString("부서명");
-				int count = rs.getInt("인원");
-				int avg = rs.getInt("평균");
-				
-				Map<Integer,Object> map = new LinkedHashMap(); // 입력 순서가 유지되는 Map
-				map.put(1, deptTitle);
-				map.put(2, count);
-				map.put(3, avg);
-				
-				empList.add(map);
-			}
-			
-			System.out.println();
-			
-		}finally {
-			close(rs);
-			close(stmt);
-		}
-		
-		return empList;
-	}
-
-
-
-
-
-
 }

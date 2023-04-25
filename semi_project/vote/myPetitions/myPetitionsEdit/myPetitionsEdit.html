@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>myPetitionsEdit</title>
+  <!-- summernote -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+  <!-- css -->
+  <link rel="stylesheet" href="myPetitionsEdit.css">
+</head>
+<body>
+  <header></header>
+  <main>
+    <div class="title">
+      <nav>
+        <div class="nav-title">
+          <h2>청원 글제목</h2>
+        </div>
+        <div class="nav">
+          <ul>
+            <li><a href="../myPetitionsDashboard/myPetitionsDashboard.html">Dashboard</a></li>
+            <li><a href="#">Petition details</a></li>
+            <li id="navSelect"><a href="../myPetitionsEdit/myPetitionsEdit.html">Edit</a></li>
+            <li><a href="#">Comments</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="content">
+      <div class="content-edit">
+        <form action="">
+          <div class="content-top">
+            <h1>청원 글 수정</h1>
+            <h2>청원 내용</h2>
+          </div>
+          <div class="content-title">
+            <h3>제목수정</h3>
+            <textarea name="conTitle" id="" rows="3" placeholder="청원 제목을 입력해주세요."></textarea>
+          </div>
+          <div class="description">
+            <h3>본문수정</h3>
+            <div id="summernote"></div>
+          </div>
+          <div class="img-link"><a href="#">이제 동영상과 이미지로 청원을 돋보이게 만들수 있습니다. 여기에서 시도하십시오!</a></div>
+          <div>
+            이미지 / 영상
+            <textarea name="conTitle" id="" rows="3"></textarea>
+          </div>
+          <div class="content-data">
+            <h2>청원 데이터</h2>
+          </div>
+          <div>
+            범위
+            <textarea name="conTitle" id="" rows="3"></textarea>
+          </div>
+          <div>
+            위치
+            <textarea name="conTitle" id="" rows="3"></textarea>
+          </div>
+          <div>
+            주제추가
+            <textarea name="conTitle" id="" rows="3"></textarea>
+          </div>
+          <div>
+            결정권자
+            <textarea name="conTitle" id="" rows="3"></textarea>
+          </div>
+          <div>
+            기본트위터메시지
+            <textarea name="conTitle" id="" rows="3"></textarea>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script>
+      $('#summernote').summernote({
+        placeholder: 'Hello stand alone ui',
+        tabsize: 2,
+        width : 600,
+        height: 400,
+        toolbar: [
+          ['style', ['style']],
+          ['font', ['bold', 'underline', 'clear']],
+          ['color', ['color']],
+          ['para', ['ul', 'ol', 'paragraph']],
+          ['table', ['table']],
+          ['insert', ['link', 'picture', 'video']],
+          ['view', ['fullscreen', 'codeview', 'help']]
+        ]
+      });
+    </script>
+</body>
+</html>

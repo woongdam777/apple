@@ -12,40 +12,54 @@
   <main>
     <div class="title">
       <nav>
-        <div class="naTtitle">
+        <div class="nav-title">
           <h2>청원 글제목</h2>
         </div>
         <div class="nav">
           <ul>
-            <li id="navSelect"><a href="#">Dashboard</a></li>
+            <li id="navSelect"><a href="../myPetitionsDashboard/myPetitionsDashboard.html">Dashboard</a></li>
             <li><a href="#">Petition details</a></li>
-            <li><a href="#">Edit</a></li>
+            <li><a href="../myPetitionsEdit/myPetitionsEdit.html">Edit</a></li>
             <li><a href="#">Comments</a></li>
           </ul>
         </div>
       </nav>
     </div>
     <div class="content">
-      <div class="contentdashborad">
-        <div class="contentLeft">
+      <div class="content-dashborad">
+        <div class="content-left">
           <div class="graph">
             <div id="contentFrame">
-              <div class="contentFrameImg"><img src="graph.jpg"></img></div>
-              <div class="graphText">
+              <div class="content-frame-img"><img src="graph.jpg"></img></div>
+              <div class="graph-text">
                 <div>1 보기</div>
                 <div>0 주</div>
               </div>
             </div>
           </div>
           <div class="agree">
-            <div id="contentFrame">
-              최근 동의자
+            <div class="support" id="contentFrame">
+              <div class="agree-top"><h3>최근 후원자</h3></div>
+              <div class="support-list">로그인로고 작성자명 서명 작성일</div>
+              <div class="agreeBt">
+                <div>
+                  <h3>전체 후원자 목록</h3>
+                  <p>지지자들의 서명과 의견이 담긴 전체 목록을 이메일로 받으십시오.</p>
+                </div>
+                <div>
+                  <select id="exportOpt">
+                    <option value="">서명(스프레드시트)</option>
+                    <option value="">댓글(스프레드시트)</option>
+                  </select>
+                </div>
+                <div><a href="#" class="export">목록 가져오기</a></div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="contentRight">
+        <div class="content-right">
           <div class="share">
-            <div class="shareContent" id="contentFrame">
+            <div class="share-content" id="contentFrame">
               <div>
                 <div><h3>당신의 청원을 공유하세요</h3></div>
                 <div>
@@ -55,16 +69,16 @@
                 </div>
               </div>
               <div>
-                <div class="inputUrl">
+                <div class="input-url">
                   <input type="url" value="https://chng.it/Sz2tMGgB">
                   <button><i class="fa-solid fa-link"></i>   복사</button>
                 </div>
               </div>
-              <div class="shareLink">
+              <div class="share-link">
                 <div> <a href="#">링크 수정</a> 더 쉽게 공유할수 있도록 수정하세요!</div>
               </div>
               <div>
-                <div class="outlink">
+                <div class="out-link">
                   <div><button><i class="fa-brands fa-facebook"></i> 페이스북</button></div>
                   <div><button><i class="fa-brands fa-square-twitter"></i> 트위터</button></div>
                   <div><button><i class="fa-regular fa-envelope"></i> 이메일</button></div>
@@ -110,7 +124,7 @@
           </div>
         </div>
       </div>
-      <div class="checkList">
+      <div class="check-list">
         <h2>청원 체크리스트</h2>
         <div class="list">
           <ul>
@@ -136,7 +150,7 @@
       </div>
     </div>
     <div class="guide">
-      <div class="guideLeft">
+      <div class="guide-left">
         <div>
           <div><h3>청원안내</h3></div>
           <div>
@@ -144,7 +158,7 @@
           </div>
         </div>
       </div>
-      <div class="guideRight">
+      <div class="guide-right">
           <div>
             <div><h3>청원관리</h3></div>
             <div>

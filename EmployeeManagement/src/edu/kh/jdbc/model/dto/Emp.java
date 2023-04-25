@@ -23,29 +23,17 @@ public class Emp {
 	
 	public Emp() { }
 
-	
-	public Emp(String empName, String empNo, String email, String phone, int salary, String deptCode, String jobCode,
-			String salLevel, double bonus, int managerId) {
-		super();
+    public Emp(int empId, String empName, String deptTitle, String jobName, int salary, String phone, String email) {
+    	this.empId = empId;
 		this.empName = empName;
-		this.empNo = empNo;
-		this.email = email;
-		this.phone = phone;
+		this.departmentTitle = deptTitle;
+		this.jobName = jobName;
 		this.salary = salary;
-		this.deptCode = deptCode;
-		this.jobCode = jobCode;
-		this.salLevel = salLevel;
-		this.bonus = bonus;
-		this.managerId = managerId;
+		this.phone = phone;
+		this.email = email;
 	}
 
-
-
-
-
-
-
-	public int getEmpId() {
+    public int getEmpId() {
 		return empId;
 	}
 
