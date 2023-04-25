@@ -17,3 +17,7 @@ Servers
 
 target
 /target/
+.springBeans
+pom.properties
+MANIFEST.MF
+*.log
