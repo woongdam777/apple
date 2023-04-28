@@ -2,7 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  /* border: 1px solid black; */
+  border: 1px solid black;
 }
 
 a{
@@ -29,12 +29,19 @@ header{ height: 57px; border-bottom: 2px solid #ccc; display: flex; justify-cont
 .menu{width: 70%;}
 .icon{width: 15%;}
 
+.menu> *:hover{border-transition: Un;}
+
+
 /* 로고 */
 
 .logo{display: flex; justify-content: center; align-items: center;}
 .logo img{
   height: 80%;
   cursor: pointer;
+}
+.logo:hover{
+  background-color: #96ec7a;
+  transition-duration: 5;
 }
 
 /* 메뉴 */
@@ -46,6 +53,10 @@ header{ height: 57px; border-bottom: 2px solid #ccc; display: flex; justify-cont
   justify-content: center;
   align-items: center;
   font-size: 24px;
+}
+
+.icon> *:hover{
+  color: #2DB400;
 }
 
 .icon> *{

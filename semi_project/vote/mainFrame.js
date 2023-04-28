@@ -5,9 +5,9 @@ document.getElementById("logoimg").addEventListener("click", () => {
 
 // 로그인 클릭시 아이콘 변경 및 로그인화면 전환
 document.getElementById("login").addEventListener("click",() => {
-  document.getElementById("login").innerHTML = '<a href="#"><i class="fa-sharp fa-solid fa-user"></i></a>';
+  document.getElementById("login").innerHTML
+  = '<a href="#"><i class="fa-sharp fa-solid fa-user"></i></a> <a id="bell" href="#"><i class="fa-sharp fa-solid fa-bell"></i></a>';
   document.getElementById("bell").style = "display : inline"
-  document.getElementById("mf").innerHTML = '<iframe id="iframe" onload="iframeLoaded()" frameborder = "0" src="/vote/login/login.html"></iframe>';
 });
 
 // 프레임 불러오기

@@ -82,15 +82,10 @@ textarea{
   width: 400px;
   border-radius: 10px;
 
-  position: fixed;
+  position: absolute;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  transition: background 0.1s ease 0s, border 0.1s ease 0s;
 }
 
 .tip *{padding: 5px}
@@ -113,10 +108,11 @@ textarea{
   align-items: center;
   margin-bottom: 10px;
 }
-.content-side-title>a{
+.content-side-title>span{
   font-size: 10px;
   color: blue;
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .content-top>*, .content-data>*{
