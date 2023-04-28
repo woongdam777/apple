@@ -10,6 +10,7 @@
 
 	<!-- 
 		root-context.xml
+		spring-security.xml
 		서버가 켜질때 web.xml이 가장 먼저 읽어들이는 설정파일
 		프로젝트 전반적으로 사용될 설정, 객체(Bean)를 생성하는 용도의 파일
 	-->
@@ -17,7 +18,12 @@
 		and Filters -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:spring/root-context.xml</param-value>
+		<param-value>
+			
+			classpath:spring/root-context.xml
+			classpath:spring/spring-security.xml
+			
+		</param-value>
 	</context-param>
 
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->

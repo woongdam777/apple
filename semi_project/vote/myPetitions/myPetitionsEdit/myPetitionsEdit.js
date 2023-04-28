@@ -1,6 +1,9 @@
-/* 팁 열기 */
 document.getElementById("titleTipBtn").addEventListener("click", () => {
-    document.getElementById("titleTip").style="display: block";
-    document.getElementsByTagNae("body").style="background-color:rgba(0,0,0,0.4)"
-    document.getElementsByClassName("tip-bg").style="display: block";
+    document.getElementById("titleTip").style.display = "block";
+});
+document.getElementById("descriptTipBtn").addEventListener("click", () => {
+    document.getElementById("descriptTip").style.display = "block";
+});
+document.getElementById("imgTipBtn").addEventListener("click", () => {
+    document.getElementById("imgTip").style.display = "block";
 });

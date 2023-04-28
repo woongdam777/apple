@@ -64,49 +64,48 @@ textarea{
   padding: 10px;
 }
 
-.tip-bg{
-  display: none;
+.tip{
   position: fixed;
-  z-index : 1000;
-  left: 0;
+  width: 100vw;
+  height: 100vh;
   top: 0;
-  width: 2000px;
-  height: 2000px;
-  overflow: auto;
+  bottom: 0;
+  left: 0;
+  right: 0;
   background-color: rgba(0,0,0,0.4);
+  z-index: 500;
+  border: 0;
 }
 
-#titleTip{
-  display: none;
-  position: absolute;
-  z-index: 9999;
-  width: 380px;
-  height: 200px;
-  padding: 10px;
-  background-color: #fefefe;
-  border: 2px solid black;
-  border-radius: 5px;
+.tip-container{
+  background-color: white;
+  width: 400px;
+  border-radius: 10px;
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  transition: background 0.1s ease 0s, border 0.1s ease 0s;
 }
+
+.tip *{padding: 5px}
+
+.tip p{font-size: 13px;}
 
 .tip-top{
   display: flex;
   justify-content: space-between;
 }
 
-.tip *{padding: 2px 0;}
 #tipFont{
   font-weight: bold;
   font-size: 14px;
 }
-.tip span{
-  font-size: 20px;
-  font-weight: bold;
-}
-.tip span:first-child{
-  text-align: center;
-  width: 200px;
-}
-.tip p{font-size: 13px;}
 
 .content-side-title{
   display: flex;
