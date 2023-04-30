@@ -110,16 +110,25 @@ nav{
   text-align: left;
 }
 
+.support> *{
+  padding: 10px;
+}
+
 .agree-top{ border-bottom: 1px solid #828282;}
-.agreeBt{
-  border-top: 1px solid #828282;
+.agreeBt{ border-top: 1px solid #828282;}
+.agreeBt>*{padding: 5px;}
+.support-list>*{
+  height: 160px;
+  padding-left: 10px;
+  font-size: 20px;
 }
 
 #exportOpt{
-  font-size: 20px;
-  width: 250px;
-  height: 50px;
+  font-size: 16px;
+  width: 200px;
+  height: 40px;
   padding: 10px;
+  border-radius: 10px;
 }
 
 .export{
@@ -132,8 +141,6 @@ nav{
   border-radius: 5px;
   font-weight: bold;
 }
-
-
 
 /* 우 */
 .content-right{width: 60%;}
@@ -252,17 +259,24 @@ nav{
 .check-list h2{padding-left: 10px;}
 .check-list ul{
   color: #828282;
+  background-color: white;
+  border: 2px solid #eeeeee;
+  border-radius: 5px;
 }
+
+.check-list li{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 10px;
+  border-bottom: 1px solid #828282;
+}
+
 .check-list h3{
   font-weight: 500;
   color: black;
 }
 
-.check-list ul{
-  background-color: white;
-  border: 2px solid #eeeeee;
-  border-radius: 5px;
-}
 
 .check-list div{
   padding: 5px 10px;

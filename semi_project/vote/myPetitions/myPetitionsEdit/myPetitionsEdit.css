@@ -64,6 +64,7 @@ textarea{
   padding: 10px;
 }
 
+/* 팁보기 */
 .tip{
   position: fixed;
   width: 100vw;
@@ -197,19 +198,32 @@ textarea{
   font-size: 12px;
 }
 
-/* content-date */
+/* content-data */
 
 .content-data{
   padding: 20px 0;
 }
 
-.content-date-side-title{
+.content-data-side-title{
   display: flex;
   align-items: center;
   height: 40px;
+  position: relative;
 }
 
-.content-date-side-title>*{
+.content-data-side-title> div{
+  display: none;
+  position: absolute;
+  width: 240px;
+  bottom: 40px;
+  left: -50px;
+  color: white;
+  background-color: black;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.content-data-side-title>*{
   padding-right: 10px;
 }
 
