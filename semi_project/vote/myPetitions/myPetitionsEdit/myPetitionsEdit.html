@@ -34,12 +34,12 @@
       <div class="content-edit">
         <form action="">
           <div class="content-top">
-            <h1>청원 글 수정</h1>
-            <h2>청원 내용</h2>
+            <h1>청원서 편집</h1>
+            <h2>청원 주요내용</h2>
           </div>
           <div class="content-title">
             <div class="content-side-title">
-              <h3>제목수정</h3>
+              <h3>제목 편집</h3>
               <span id="titleTipBtn">팁 보기</span>
               <dialog class="tip" id="titleTip">
                 <div class="tip-container">
@@ -66,11 +66,11 @@
                 </div>
               </dialog>
             </div>
-            <textarea name="conTitle" id="" rows="3" placeholder="청원 제목을 입력해주세요."></textarea>
+            <textarea name="conTitle" id="" rows="3" placeholder="달성하려는 청원 목표를 입력해주세요."></textarea>
           </div>
           <div class="description">
             <div class="content-side-title">
-              <h3>본문수정</h3>
+              <h3>본문 편집</h3>
               <span id="descriptTipBtn">팁 보기</span>
               <dialog class="tip" id="descriptTip">
                 <div class="tip-container">
@@ -138,6 +138,7 @@
               <hr>
               <div class="content-img-up">
                 <div class="content-img-up-button"><button>사진 업로드</button></div>
+                <div id="and">또는</div>
                 <div><p>사진은 최소 1200 × 675 픽셀이어야 합니다. 텍스트가 없는 큰 사진이 가장 좋습니다.</p></div>
               </div>
             </div>
@@ -154,10 +155,10 @@
               </div>
             </div>
             <select class="scope">
-              <option value="">Select a scope</option>
-              <option value="">Local</option>
-              <option value="">National</option>
-              <option value="">Global</option>
+              <option>청원서 적용범위 선택</option>
+              <option>지역</option>
+              <option>국가</option>
+              <option>전세계</option>
             </select>
           </div>
           <div>
@@ -168,7 +169,7 @@
                 <p>귀하의 청원이 어떤 분야와 더 관련이 있습니까? 귀하의 청원에 적합한 청중을 찾는데 도움이 될 것입니다.</p>
               </div>
             </div>
-            <input name="conTitle" id="" rows="3"></input>
+            <input id="lcationInput" rows="3"></input>
           </div>
           <div>
             <div class="content-data-side-title">
@@ -178,7 +179,10 @@
                 <p>청원서의 주요 관련 주제는 무엇입니까? 귀하의 청원에 적합한 청중을 찾는데 도움이 될 것입니다.</p>
               </div>
             </div>
-            <textarea name="conTitle" id="" rows="3"></textarea>
+            <input id="topicInput" rows="3">
+              <div>권리</div>
+              <div>추가</div>
+            </input>
           </div>
           <div>
             <div class="content-data-side-title">
@@ -213,11 +217,9 @@
         toolbar: [
           ['style', ['style']],
           ['font', ['bold', 'underline', 'clear']],
-          ['color', ['color']],
           ['para', ['ul', 'ol', 'paragraph']],
           ['table', ['table']],
-          ['insert', ['link', 'picture', 'video']],
-          ['view', ['fullscreen', 'codeview', 'help']]
+          ['insert', ['link', 'picture']],
         ]
       });
     </script>

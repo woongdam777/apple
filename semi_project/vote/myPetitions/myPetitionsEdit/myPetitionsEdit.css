@@ -182,7 +182,10 @@ textarea{
   border-radius: 5px;
 }
 
-.content-img-up{display: flex;}
+.content-img-up{
+  display: flex;
+  position: relative;
+}
 .content-img-up-button{padding-right: 25px;}
 .content-img-up button{
   font-weight: bold;
@@ -194,6 +197,15 @@ textarea{
   border: 1px solid #828282;
   border-radius: 5px;
 }
+#and{
+  text-align: center;
+  width: 40px;
+  background-color: #ececec;
+  position: absolute;
+  top: -34px;
+  right: 47%;
+}
+
 .content-img-up p{
   font-size: 12px;
 }
@@ -211,23 +223,39 @@ textarea{
   position: relative;
 }
 
+/* 청원 데이터 팁 */
 .content-data-side-title> div{
   display: none;
   position: absolute;
   width: 240px;
   bottom: 40px;
   left: -50px;
+
   color: white;
   background-color: black;
   border-radius: 10px;
   padding: 10px;
+
+  font-size: 12px;
+  line-height: 18px;
 }
 
 .content-data-side-title>*{
   padding-right: 10px;
 }
 
+/* 범위 */
 .scope{
+  width: 100%;
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 10px;
+}
+
+/* 위치 */
+#lcationInput{
   width: 100%;
   height: 40px;
   border: 1px solid #ccc;

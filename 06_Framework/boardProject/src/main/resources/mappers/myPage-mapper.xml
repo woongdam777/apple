@@ -30,7 +30,7 @@
 	</select>
 	
 	
-	<!-- 항상 결과값이 int이기 때문에 rewult안 적는다 -->
+	<!-- 항상 결과값이 int이기 때문에 result 안 적는다 -->
 	<!-- 비밀 번호 변경 -->
 	<select id="changePw" parameterType="Member">
 		UPDATE "MEMBER"
