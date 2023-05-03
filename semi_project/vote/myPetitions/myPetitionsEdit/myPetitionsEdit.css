@@ -220,16 +220,19 @@ textarea{
   display: flex;
   align-items: center;
   height: 40px;
-  position: relative;
 }
 
 /* 청원 데이터 팁 */
-.content-data-side-title> div{
+.fa-circle-question{
+  position: relative;
+}
+
+.fa-circle-question>div{
   display: none;
   position: absolute;
   width: 240px;
-  bottom: 40px;
-  left: -50px;
+  bottom: 30px;
+  left: -95px;
 
   color: white;
   background-color: black;
@@ -238,6 +241,22 @@ textarea{
 
   font-size: 12px;
   line-height: 18px;
+}
+
+.fa-circle-question:after{
+  display: none;
+  border-top: 7px solid black;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 0px solid transparent;
+  content: "";
+  position: absolute;
+  top: -14px;
+  left: 1px;
+}
+
+.fa-circle-question:hover:after{
+  display: block;
 }
 
 .content-data-side-title>*{
@@ -262,4 +281,67 @@ textarea{
   border-radius: 5px;
   font-size: 16px;
   padding: 10px;
+}
+
+/* 주제추가 */
+#topicInput{
+  width: 100%;
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 10px;
+}
+
+/* 결정권자 */
+.content-owner{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 100%;
+  height: 100px;
+  background-color: #ececec;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.content-owner input{
+  width: 100%;
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding-left: 5px;
+}
+
+
+
+/* 편집버튼 */
+.edit-btn{
+  display: flex;
+  justify-content: end;
+  
+  margin-top: 30px;
+  width: 100%;
+  height: 40px;
+  
+}
+
+.edit-btn *{
+  font-size: 20px;
+  margin-left: 20px;
+  border-radius: 5px;
+  width: 100px;
+  text-align: center;
+  border: none;
+}
+
+#cancel{
+  border: 2px solid #828282;
+}
+
+#save{
+  background-color: red;
+  color: white;
 }
