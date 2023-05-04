@@ -171,6 +171,7 @@ textarea{
   border-radius: 5px;
   font-weight: bold;
   text-align: center;
+  cursor: pointer;
 }
 
 .content-img-url input{
@@ -196,6 +197,7 @@ textarea{
   background-color: #ececec;
   border: 1px solid #828282;
   border-radius: 5px;
+  cursor: pointer;
 }
 #and{
   text-align: center;
@@ -271,6 +273,7 @@ textarea{
   border-radius: 5px;
   font-size: 16px;
   padding: 10px;
+  outline: none;
 }
 
 /* 위치 */
@@ -281,6 +284,7 @@ textarea{
   border-radius: 5px;
   font-size: 16px;
   padding: 10px;
+  outline: none;
 }
 
 /* 주제추가 */
@@ -291,6 +295,7 @@ textarea{
   border-radius: 5px;
   font-size: 16px;
   padding: 10px;
+  outline: none;
 }
 
 /* 결정권자 */
@@ -313,19 +318,22 @@ textarea{
   border: 1px solid #ccc;
   border-radius: 5px;
   padding-left: 5px;
+  outline: none;
 }
 
-
+/* 기본 트위터 메시지 */
+textarea{
+  outline: none;
+  border: 1px solid #ccc;
+}
 
 /* 편집버튼 */
 .edit-btn{
   display: flex;
   justify-content: end;
-  
-  margin-top: 30px;
+  margin: 30px 0;
   width: 100%;
   height: 40px;
-  
 }
 
 .edit-btn *{
@@ -338,7 +346,7 @@ textarea{
 }
 
 #cancel{
-  border: 2px solid #828282;
+  border: 2px solid #ccc;
 }
 
 #save{
