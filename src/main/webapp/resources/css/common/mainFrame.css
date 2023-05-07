@@ -1,76 +1,82 @@
- * {
+header *, footer * {
   margin: 0;
   padding: 0;
   /* border: 1px solid black; */
 }
 
-.menu a {
-  display: inline-block; /* 인라인 블록 요소로 설정하여 가로 정렬 */
-  margin-left: 5px; /* 텍스트 왼쪽 간격 설정 */
-  text-align: center; /* 수평 중앙 정렬 */
-  text-decoration: none;
-  color: black;
-}
-
-.nav-menu {
-  list-style: none;
-  padding: 15px;
-}
-
 /* header */
-header {
+header{
   height: 57px;
   border-bottom: 2px solid #ccc;
-  display: block;
+  display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
 }
 
-.logomenuicon {
+.logo-menu-icon {
   height: 100%;
   margin: auto;
   width: 960px;
   display: flex;
+  justify-content: center;
 }
 
-.logo {
-  width: 20%;
+.header-logo {
+  width: 160px;
 }
-.menu {
-  width: 60%;
+.header-menu{
+  width: 65%;
   display: flex;
   align-items: center;
 }
 
-.icon {
+.header-icon {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.icon i {
+.header-icon i {
   margin: 0 12px;
 }
 
 /* 로고 */
 
-.logo {
+.header-logo {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.logo img {
-  height: 80%;
-  cursor: pointer;
+#logoimg{
+  height: 40px;
 }
 
 /* 메뉴 */
-.menu > ul {
+.header-menu > ul {
   display: flex;
+  position: relative;
+  font-size: 16px;
+}
+
+.header-menu a {
+  display: inline-block; /* 인라인 블록 요소로 설정하여 가로 정렬 */
+  text-align: center; /* 수평 중앙 정렬 */
+  text-decoration: none;
+  color: black;
+}
+
+.header-menu a:hover{
+  color: #2db400;
+}
+
+.header-menu li{
+  list-style: none;
+  padding: 15px;
 }
 
 /* 아이콘 */
-.icon {
+.header-icon {
   padding: 10px;
   text-align: center;
   font-size: 24px;
@@ -78,20 +84,18 @@ header {
 
 /* main */
 main {
-  justify-content: center;
-  align-items: center;
+  position: relative;
+  padding-bottom: 50px;
   height: auto;
-  padding-bottom: 250px;
-  /* display: flex; */
-  flex-direction: column;
+  min-height: 100vh;
 }
 
 /* footer */
 footer {
+  position: absolute;
+
+  margin-top: 20px;
   width: 100%;
-  /* position: absolute;
-  transform: translateY(-100%); */
-  /* bottom: 0px; */
 
   height: 250px;
   background-color: #ccc;
@@ -103,60 +107,44 @@ footer {
   align-items: center;
 }
 
-.footerList {
+.footer-list{
   display: flex;
   width: 960px;
   justify-content: space-around;
 }
 
-.footerList > div {
+.footer-list > div {
   width: 100%;
 }
 
-.footerList * {
+.footer-list * {
   text-align: left;
   padding: 5px;
 }
 
-.footerList h2 {
+.footer-list h2 {
   font-size: 16px;
 }
 
-.footerList li {
+.footer-list li {
+  list-style: none;
   font-size: 12px;
 }
 
-.last {
+.footer-last {
   width: 960px;
-  padding: 15px;
   font-size: 12px;
   border-top: 1px solid #828282;
 }
 
-.admin {
+.footer-copy {
   font-weight: bold;
   font-size: 14px;
   color: #515151;
 }
 
-.last > p {
+.footer-last > p {
   color: #515151;
   font-weight: 600;
-}
-
-.title {
-  font-size: 50px;
-}
-.subTitle {
-  margin-top: 10px;
-}
-.titleBtn {
-  border-radius: 5px;
-  background-color: #2db400;
-  margin: 30px;
-  width: 100px;
-  height: 40px;
-  color: white;
-  border: none;
-  font-size: 16px;
+  padding: 5px 3px;
 }

@@ -14,19 +14,17 @@
     <link rel="stylesheet" href="/resources/css/common/maincontent2.css">
 </head>
 <body>
-    <header>
-        <jsp:include page="/WEB-INF/views/common/header.jsp" />
-    </header>
+    <jsp:include page="/WEB-INF/views/common/header.jsp" />
     <main>
-         <section class="section1">
-      <div class="container id="mf">
+      <section class="section1">
+      <div class=container id="mf">
         <div style="margin-top: 100px;">
           <h1 class="title">당신의 투표를 기다립니다.</h1>
           <h3 class="subTitle">508,140,283명이 행동에 나섰습니다. 매일 승리하십시오.</h3>
           <button class="titleBtn">청원시작</button>
         </div>
       </div>
-     </section>
+      </section>
       <div class="container2">
         <div class="item box1"><span id="victory-btn">청원 승리!</span><br><br>
 
