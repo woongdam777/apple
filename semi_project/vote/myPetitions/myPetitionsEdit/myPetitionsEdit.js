@@ -36,16 +36,30 @@ document.getElementById("AddBtn").addEventListener("click", () => {
     document.querySelector(".content-img").innerHTML = "";
     document.querySelector(".content-img").style = "height:300px"
 
+    if(addurl == null){
+        document.querySelector(".content-img").innerHTML
+    }
+
+
     const input = document.createElement("div");
 
     const closeBtn = document.createElement("button");
     closeBtn.innerText = "버튼";
-    closeBtn.style.position = "absolute";
-    closeBtn.style.backgroundColor = "red";
+    // closeBtn.style.position = "absolute";
+    // closeBtn.style.top = "50"
+    // closeBtn.style.left = "50"
+
+    // closeBtn.style.backgroundColor = "red";
+
+    closeBtn.style = "position : absolute, color : blue ";
+
+    closeBtn.addEventListener("click", () =>{return});
 
     const youtube = document.createElement("iframe");
-    youtube.src = "https://www.youtube.com/embed/sH2pXruvCZI";
-    youtube.style.height = "300px";
+    youtube.width = "560";
+    youtube.height = "315";
+    youtube.src = addurl;
+    youtube.allow = accelerometer;
 
     input.append(closeBtn, youtube);
 

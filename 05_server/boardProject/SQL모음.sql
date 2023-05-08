@@ -158,5 +158,40 @@ SELECT * FROM "AUTH_KEY";
 
 SELECT COUNT(*) FROM "AUTH_KEY"
 WHERE EMAIL = #{email}
-AND CODE = #{inputKey}
+AND CODE = #{inputKey};
+
+----------------------------------------------------------------------------------------
+
+-- 게시판 종류
+
+CREATE TABLE "BOARD_TYPE"(
+	"BOARD_CODE" NUMBER CONSTRAINT "PK_BOARD_TYPE" PRIMARY KEY,
+	"BOARD_NAME" VARCHAR2(30) NOT NULL
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
