@@ -128,7 +128,7 @@
             
 
             <!-- 내용 -->
-            <div class="board-content">${board.boardNo}번째 게시글 내용입니다.</div>
+            <div class="board-content">${board.boardContent}</div>
 
 
             <!-- 버튼 영역-->

@@ -596,5 +596,46 @@ AND MEMBER_NO = 18
 COMMIT;
 
 
+-- 한번에 여러개 INSERT 하기
+
+-- INSERT ALL : 여러 테이블에 동시에 INSERT 하는 구문
+--> 시퀀스 생성 구문을 작성하지 못함 (탈락)
+
+-- INSERT + SUB QUERY
+
+INSERT INTO "BOARD_IMG"
+
+SELECT SEQ_IMG.NO.NEXTVAL,A.*
+FROM(
+	SELECT '웹접근경로' IMG_PATH, '변경명' IMG_RENAME, '원본명' IMG_ORIGINAL,
+		0 IMG_ORDER, 1495 BOARD_NO
+	FROM DUAL
+	
+	UNION ALL
+	
+	SELECT '웹접근경로' IMG_PATH, '변경명' IMG_RENAME, '원본명' IMG_ORIGINAL,
+		1 IMG_ORDER, 1495 BOARD_NO
+	FROM DUAL
+	
+	UNION ALL
+	
+	SELECT '웹접근경로' IMG_PATH, '변경명' IMG_RENAME, '원본명' IMG_ORIGINAL,
+		2 IMG_ORDER, 1495 BOARD_NO
+	FROM DUAL
+) A;
+
+
+ROLLBACK;
+
+
+
+
+
+
+
+
+
+
+
 
 
