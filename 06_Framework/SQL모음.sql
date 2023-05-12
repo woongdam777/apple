@@ -628,14 +628,37 @@ FROM(
 ROLLBACK;
 
 
+-- 게시글 수정
+UPDATE "BOARD" SET
+BOARD_TITLE = #{boardTitile},
+BOARD_CONTENT = #{boardContent},
+B_UPDATE_DATE = SYSDATE 
+WHERE BOARD_CODE = #{boardCode} 
+AND BOARD_NO = #{boardNo}
+;
 
 
+-- 이미지 삭제
+DELETE FROM "BOARD_IMG"
+WHERE BOARD_NO = #{boardNo}
+AND IMG_ORDER IN (${deleteList})
+;
 
+-- 이미지 수정
+UPDATE "BOARD_IMG" SET
+IMG_PATH = #{imagePath},
+IMG_ORIGINAL = #{imageOriginal}, 
+IMG_RENAME = #{imageReName}
+WHERE BOARD_NO = #{boardNo}
+AND IMG_ORDER = #{imageOrder}
+;
 
-
-
-
-
+--게시글 삭제
+UPDATE "BOARD" SET
+BOARD_DEL_FL = 'Y'
+WHERE BOARD_NO = #{boardNo}
+AND MEMBER_NO =#{memberNo}
+;
 
 
 

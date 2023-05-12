@@ -50,3 +50,25 @@ boardLike.addEventListener("click", e => {
         console.log(err);
     }) // 예외 발생 시 처리하는 부분
 });
+
+// 게시글 수정버튼을 눌렀을 때
+document.getElementById("updateBtn").addEventListener("click", () => {
+
+    location.href = location.pathname.replace("board","board2") + "/update" + location.search
+    // GET방식 요청 / /board2/2/1507/update?cp=1
+});
+
+// 게시글 삭제 버튼이 클릭 되었을 때
+document.getElementById("deleteBtn").addEventListener("click", () => {
+
+    if(confirm("정말 삭제 하시겠습니까?")){
+
+        location.href = location.pathname.replace("board","board2") + "/delete"
+        // GET방식 요청 / /board2/2/1507/delete
+
+        // 삭제 서비스 호출 성공시 redirect:/board/{boardCode}
+        // + RedirectAttributes 이용해서 "삭제 되었습니다" alert 출력
+
+    }
+
+});
