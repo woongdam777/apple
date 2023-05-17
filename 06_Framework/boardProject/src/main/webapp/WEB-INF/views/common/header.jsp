@@ -5,6 +5,9 @@
 <!-- fontawesome 라이브러리 추가 -->
 <script src="https://kit.fontawesome.com/f7459b8054.js" crossorigin="anonymous"></script>
 
+<%-- 검색 자동완성js --%>
+<script src="/resources/js/header.js"></script>
+
 <header>
     <section>
         <!-- 클릭 시 메인 페이지로 이동하는 로고 -->
@@ -23,7 +26,7 @@
                 - POST : input태그 값을 주소에 담지 않고 제출(주소에 안보임) 
                         -> HTTP Body에 담아서 제출
             -->
-            <form action="#" method="get">
+            <form action="/board/1" method="get">
                 <!-- form태그 내 영역 구분 -->
                 <fieldset>
                     <!--
@@ -32,12 +35,16 @@
 
                         autocomplete="off" : 브라우저 제공 자동완성 off
                     -->
-                    <input type="search" name="query" id="query" placeholder="검색어를 입력해주세요." autocomplete="off">
+                    <input type="search" name="query" id="query" placeholder="검색어를 입력해주세요." autocomplete="off" value="${param.query}">
+                    <%-- 제목 검색 --%>
+                    <input type="hidden" name="key" value="t">
                     <!-- 검색 버튼 -->
                     <!-- button type="submit"이 기본값 -->
                     <button id="searchBtn" class="fa-solid fa-magnifying-glass"></button>
                 </fieldset>
             </form>
+
+            <ul id="searchResult" class="close"></ul>
         </article>
     </section>
     <section></section>

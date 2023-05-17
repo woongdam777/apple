@@ -86,16 +86,29 @@ public class BoardController {
 				  @PathVariable("boardCode") int boardCode
 				, @RequestParam(value="cp", required = false, defaultValue="1") int cp
 				, Model model
+				, @RequestParam Map<String, Object> paramMap // 파라미터 전부 다 담겨있음
 				) {
 		
 		// boardCode 확인
 		//System.out.println("boardCode : " + boardCode);
 		
-		// 게시글 목록 조회 서비스 호출
-		Map<String, Object> map = service.selectBoardList(boardCode, cp);
+		if(paramMap.get("key") == null) { // 검색어가 없을 때(검색x)
+			
+			// 게시글 목록 조회 서비스 호출
+			Map<String, Object> map = service.selectBoardList(boardCode, cp);
+			
+			// 조회 결과를 request scope에 세팅 후 forward
+			model.addAttribute("map",map);
+			
+		}else { // 검색어가 있을 때(검색o)
+			
+			paramMap.put("boardCode", boardCode);
+			
+			Map<String, Object> map = service.selectBoardList(paramMap, cp); 
+			
+			model.addAttribute("map",map);
+		}
 		
-		// 조회 결과를 request scope에 세팅 후 forward
-		model.addAttribute("map",map);
 		
 		return "board/boardList";
 	}
@@ -234,15 +247,11 @@ public class BoardController {
 					
 					resp.addCookie(c);
 				}
-				
-				
 			}
-			
 			
 			// -------------------------------------------------------
 			path = "board/boardDetail"; // forward할 jsp경로
 			model.addAttribute("board", board);
-			
 			
 		}else { // 조회 결과가 없을 경우
 			path = "redirect:/board/" + boardCode;
@@ -260,6 +269,15 @@ public class BoardController {
 		// System.out.println(paramMap);
 		return service.like(paramMap);
 	}
+	
+	
+    // 헤더 검색
+    @GetMapping(value="/headerSearch", produces = "application/json; charset=UTF-8")
+    @ResponseBody
+    public List<Map<String, Object>> headerSearch(String query){
+    	return service.headerSearch(query);
+    }
+
 	
 	
 	
