@@ -22,7 +22,7 @@
                 - POST : input태그 값을 주소에 담지 않고 제출(주소에 안보임) 
                         -> HTTP Body에 담아서 제출
             -->
-            <form action="/board/1" method="get">
+            <form th:action="@{/board/1}" method="get">
                 <!-- form태그 내 영역 구분 -->
                 <fieldset>
                     <!--
@@ -31,7 +31,7 @@
 
                         autocomplete="off" : 브라우저 제공 자동완성 off
                     -->
-                    <input type="search" name="query" id="query" placeholder="검색어를 입력해주세요." autocomplete="off" value="${param.query}">
+                    <input type="search" name="query" id="query" placeholder="검색어를 입력해주세요." autocomplete="off" th:value="${param.query}">
                     <input type="hidden" name="key" value="t">
                     <!-- 검색 버튼 -->
                     <!-- button type="submit"이 기본값 -->
@@ -73,15 +73,10 @@
 </header>
 <nav>
     <ul>
-        <li><a href="#">공지사항</a></li>
-        <li><a href="#">자유게시판</a></li>
-        <li><a href="#">질문게시판</a></li>
-        <li><a href="#">FAQ</a></li>
-        <li><a href="#">1:1문의</a></li>
-
         <!-- <%-- interceptor를 이용해서 조회된 boardTypeList를 application scop에서 얻어와 화면에 출력 --%> -->
-        <li>
-            <a href="/board/${boardType.BOARD_CODE}">${boardType.BOARD_NAME}</a>
+        <li th:each="boardType : ${application.boardTypeList}">
+            <a th:href="@{/board/{boardCode}(boardCode=${boardType.BOARD_CODE})}" th:text="${boardType.BOARD_NAME}">게시판 이름</a>
+            <!-- <a th:href="|/board/[[${boardType.BOARD_CODE}]]|" th:text="${boardType.BOARD_NAME}">게시판 이름</a> -->
         </li>
         <!-- <%-- 로그인 했을 때 채팅 보여짐 --%> -->
         <li><a href="/chatting">채팅</a></li>
