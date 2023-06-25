@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>searchSuccess</title>
+</head>
+<body>
+	<h2>회원정보</h2>
+    <table border="1">
+        <tr>
+            <th>회원정보</th>
+            <th>회원아이디</th>
+            <th>회원이름</th>
+            <th>회원나이</th>
+        </tr>
+        <tr>
+            <th th:text="${user.userNo}">회원정보</th>
+            <th th:text="${user.userId}">회원아이디</th>
+            <th th:text="${user.userName}">회원이름</th>
+            <th th:text="${user.userAge}">회원나이</th>
+        </tr>
+    </table>
+</body>
+</html>

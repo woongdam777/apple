@@ -123,7 +123,7 @@
 
     <script th:inline="javascript">
         const boardNo = /*[[${board.boardNo}]]*/ "게시글 번호";
-        const loginMemberNo = /*[[${session.loginMember?.memberNo}]]*/ "로그인회원 번호";
+        let loginMemberNo = /*[[${session.loginMember?.memberNo}]]*/ "로그인회원 번호";
 
         if(loginMemberNo == null) loginMemberNo="";
 
@@ -131,9 +131,6 @@
         console.log(loginMemberNo);
     
     </script>
-
-
-
 
     <script th:src="@{/js/board/boardDetail.js}"></script>
     <script th:src="@{/js/board/comment.js}"></script>
