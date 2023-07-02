@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>resultPage</title>
+</head>
+<body>
+  <h1 th:text="${name} + '님의 구매목록'">구매목록</h1>
+  <h2>
+      검은 펜 <span th:text="${blackPen}"></span>개 : <span id="blackPen"></span> <br><br>
+      빨간 펜 <span th:text="${redPen}"></span>개 :  <span id="redPen"></span> <br><br>
+      파란 펜 <span th:text="${bluePen}"></span>개 :  <span id="bluePen"></span> <br><br>
+      화이트 <span th:text="${white}"></span>개 :  <span id="white"></span> 
+  </h2>
+  <hr>
+  <h2>
+      총합 <span th:text="${total}"></span>원을 결제하셨습니다.
+  </h2>
+</body>
+
+<script th:inline="javascript">
+  const blackPen = /*[[${blackPen}]]*/ blackPen;
+  const redPen = /*[[${redPen}]]*/ redPen;
+  const bluePen = /*[[${bluePen}]]*/ bluePen;
+  const white = /*[[${white}]]*/ white;
+
+  document.getElementById("blackPen").innerText = parseInt(blackPen)*500;
+  document.getElementById("redPen").innerText = parseInt(redPen)*700;
+  document.getElementById("bluePen").innerText = parseInt(bluePen)*700;
+  document.getElementById("white").innerText = parseInt(white)*1000;
+
+</script>
+</html>
