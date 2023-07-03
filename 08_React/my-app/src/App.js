@@ -4,6 +4,7 @@ import './App.css';
 import Ex1 from './components/Exam1';
 import Ex2 from './components/Exam2';
 import PropsEx from './components/R01_props';
+import State1 from './components/R02_state1';
 
 function App() {
   // 리액트 컴포넌트는 딱 하나의 요소만을 반환할 수 있다.
@@ -13,14 +14,16 @@ function App() {
     <>
       {/* jsx 주석 */}
       <h1>Hello React </h1>
-      <div>ㅇㅇㅇ 리액트~</div>
+      <div>리액트</div>
 
       {/* <Ex1 /> */}
       {/* <Ex2 /> */}
 
-      <PropsEx name={ "홍길동" } />
-      <PropsEx name={ "고길동" } />
-      <PropsEx name={ "봉길동" } />
+      {/* <PropsEx name={ "홍길동" } /> */}
+      {/* <PropsEx name={ "고길동" } /> */}
+      {/* <PropsEx name={ "봉길동" } /> */}
+
+      <State1 />
 
     </>
 
