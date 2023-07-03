@@ -5,6 +5,8 @@ import Ex1 from './components/Exam1';
 import Ex2 from './components/Exam2';
 import PropsEx from './components/R01_props';
 import State1 from './components/R02_state1';
+import State2 from './components/R03_state2';
+import State3 from './components/R04_state3';
 
 function App() {
   // 리액트 컴포넌트는 딱 하나의 요소만을 반환할 수 있다.
@@ -23,7 +25,10 @@ function App() {
       {/* <PropsEx name={ "고길동" } /> */}
       {/* <PropsEx name={ "봉길동" } /> */}
 
-      <State1 />
+      {/* <State1 /> */}
+      <State2 init={100} />
+      <hr />
+      <State3 />
 
     </>
 
