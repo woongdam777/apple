@@ -7,6 +7,8 @@ import PropsEx from './components/R01_props';
 import State1 from './components/R02_state1';
 import State2 from './components/R03_state2';
 import State3 from './components/R04_state3';
+import TodoList1 from './components/R05_todolist1';
+import ComtextApi from './components/R06_context_api';
 
 function App() {
   // 리액트 컴포넌트는 딱 하나의 요소만을 반환할 수 있다.
@@ -16,7 +18,7 @@ function App() {
     <>
       {/* jsx 주석 */}
       <h1>Hello React </h1>
-      <div>리액트</div>
+      <div>리액트하는중</div>
 
       {/* <Ex1 /> */}
       {/* <Ex2 /> */}
@@ -26,9 +28,12 @@ function App() {
       {/* <PropsEx name={ "봉길동" } /> */}
 
       {/* <State1 /> */}
-      <State2 init={100} />
-      <hr />
-      <State3 />
+      {/* <State2 init={100} /> */}
+      {/* <hr /> */}
+      {/* <State3 /> */}
+
+      {/* <TodoList1 /> */}
+      <ComtextApi />
 
     </>
 

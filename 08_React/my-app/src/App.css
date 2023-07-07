@@ -1,3 +1,7 @@
 h1{
-  color: #833d77;
+  color: #1e92ff;
+}
+
+.completed{
+  text-decoration: line-through;
 }
